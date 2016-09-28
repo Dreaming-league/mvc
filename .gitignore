@@ -2,3 +2,6 @@
 .idea/
 .DS_Store
 mvc.iml
+target/maven-archiver/
+target/mvc.war
+
