@@ -6,10 +6,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+/**
+ * @targget     测试web响应测试Controller类
+ *
+ * @author      tikie
+ * @date        2016-09-28
+ * @version     1.0.0
+ */
 @Controller
 @RequestMapping(value = "/test")
 public class HelloWorldController{
 
+    /**
+     * @target      响应/test/hello的方法
+     *
+     * @return      ModelAndView    跳转到hello页面
+     *              即WEB-INF/views/jsp/hello.jsp页面
+     */
     @RequestMapping(value = "/hello",method = RequestMethod.GET)
     public ModelAndView handleRequest(){
         /*
