@@ -1,5 +1,5 @@
 #Springmvc起航
-    已Springmvc架构搭建最简单的web项目，做为一个引子
+    以Springmvc架构搭建最简单的web项目，做为一个引子
     
     
 ###关于我们
