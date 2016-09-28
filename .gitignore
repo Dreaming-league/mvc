@@ -1,4 +1,21 @@
 #不会被提交到Github的文件或路径
-.idea/
 .DS_Store
 mvc.iml
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# maven 默认target编译路径
+/target
+
+# IDE相关，不再同步
+/.idea
+/*.iml
+/.classpath
+/*.eml
