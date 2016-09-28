@@ -1,3 +1,4 @@
 #不会被提交到Github的文件或路径
+.idea/
 .DS_Store
 mvc.iml
