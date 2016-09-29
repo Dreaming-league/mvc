@@ -1,6 +1,9 @@
 package com.tikie.test.web;
 
 
+import com.tikie.test.entity.HelloWorld;
+import com.tikie.test.service.HelloWorldService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value = "/test")
 public class HelloWorldController{
 
+    @Autowired
+    private HelloWorldService helloWorldService;
     /**
      * @target      响应/test/hello的方法
      *
@@ -31,9 +36,12 @@ public class HelloWorldController{
         3、将命令对象传入业务对象进行业务处理
         4、选择下一个页面
         */
+
+        HelloWorld hello = helloWorldService.getById(0);
+
         ModelAndView mv = new ModelAndView();
         //添加模型数据 可以是任意的POJO对象
-        mv.addObject("message", "Hello World!");
+        mv.addObject("message", hello.getMessage());
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
         mv.setViewName("hello");
         return mv;
