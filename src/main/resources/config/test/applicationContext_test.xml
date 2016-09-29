@@ -14,7 +14,7 @@
        default-lazy-init="true">
 
     <description>Spring单元测试环境配置文件 </description>
-    <context:property-placeholder location="classpath*:/config/test/*.properties" ignore-resource-not-found="false" system-properties-mode="OVERRIDE" />
+    <context:property-placeholder location="classpath*:/config/test/*.properties" ignore-resource-not-found="true" system-properties-mode="OVERRIDE" />
     <!--<import resource="applicationContext-dubbo.xml"/>-->
 
     <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->

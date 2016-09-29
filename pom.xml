@@ -19,6 +19,7 @@
       <groupId>org.springframework</groupId>
       <artifactId>spring-test</artifactId>
       <version>4.3.3.RELEASE</version>
+      <scope>test</scope>
     </dependency>
     <!-- test end -->
 
@@ -121,6 +122,19 @@
         <groupId>org.springframework</groupId>
         <artifactId>spring-jdbc</artifactId>
         <version>4.3.3.RELEASE</version>
+      </dependency>
+      <!-- Javaee API 包含javax.persistence.Entity -->
+      <dependency>
+        <groupId>javax</groupId>
+        <artifactId>javaee-api</artifactId>
+        <version>7.0</version>
+        <scope>compile</scope>
+      </dependency>
+      <!-- hibernate依赖,mybatis需要 -->
+      <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>5.2.2.Final</version>
       </dependency>
     <!-- 数据持久化 end -->
 
