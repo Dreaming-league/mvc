@@ -5,6 +5,7 @@
 
     <select id="getById" resultType="HelloWorld">
         SELECT * FROM helloworld
-        WHERE id=${_parameter}
+        WHERE id=#{id}
+--         WHERE id=${_parameter}
     </select>
 </mapper>
