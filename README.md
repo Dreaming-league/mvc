@@ -41,3 +41,4 @@
         11.以后新建的表统一增加模块前缀,如:test_helloworld(表明全小写,字段名驼峰)
         
         12.开发完每个接口后必需写对应的测试类,确保无bug
+        13.接口采取见名知义\言简意赅的原则,如:getById(或get),insert,delete,update,getAll,getSimilarByMessage等
