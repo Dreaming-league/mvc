@@ -8,4 +8,32 @@
         WHERE id=#{id}
 --         WHERE id=${_parameter}
     </select>
+
+    <!-- 对应表的主键一定要设置为自增的 -->
+    <insert id="insert" parameterType="HelloWorld" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `helloworld` (
+            `message`
+          )VALUES (
+            #{message}
+          )
+    </insert>
+
+    <delete id="deleteById">
+        DELETE FROM `helloworld` WHERE id=#{id}
+    </delete>
+
+    <update id="update">
+        UPDATE `helloworld` SET
+          `message`=#{message}
+    </update>
+
+    <select id="getSimilarByMessage" resultMap="HelloWorld">
+        <bind name="pattern" value="'%' + _parameter + '%'" />
+        SELECT * FROM `helloworld` 
+          WHERE `message` LIKE #{pattern}
+    </select>
+    
+    <select id="getAll" resultMap="HelloWorld">
+        SELECT * FROM `helloworld`
+    </select>
 </mapper>
