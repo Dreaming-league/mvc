@@ -43,7 +43,12 @@
             <result property="updatedTime" column="r_updatedTime"/>
             <result property="note" column="r_note"/>
         </collection>
+        <collection property="children" ofType="Permission" column="id" select="getChildren" />
     </resultMap>
+    
+    <select id="getChildren" resultMap="Permission">
+        SELECT * FROM `shiro_permission` WHERE parentId=#{id}
+    </select>
 
     <!-- 获取用户信息及用户权限关系信息 -->
     <select id="getById" parameterType="int" resultMap="Permission">

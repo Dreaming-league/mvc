@@ -28,5 +28,6 @@ public class PermissionServiceTest {
 
         System.out.println(permission.getName());
         System.out.println(permission.getRoleRelationList().toString());
+        System.out.println(permission.getChildren().toString());
     }
 }

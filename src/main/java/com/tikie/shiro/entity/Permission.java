@@ -26,6 +26,8 @@ public class Permission {
 
     private List<RolePermissionRelation> roleRelationList;    //被哪些角色关系拥有
 
+    private List<Permission> children;                        //子权限
+
     private String isActive;        //是否有效/启用
     private String isDelete;        //是否逻辑删除
 
