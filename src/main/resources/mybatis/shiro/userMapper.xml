@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.tikie.shiro.mapper.UserMapper">
+    <sql id="userColumns">
+        A.*,
+        R.userId as userId,
+        R.roleId as roleId,
+
+        R.isActive as r_isActive,
+        R.isDelete as r_isDelete,
+        R.createdBy as r_createdBy,
+        R.updatedBy as r_updatedBy,
+        R.createdTime as r_createdTime,
+        R.updatedTime as r_updatedTime,
+        R.note as r_note
+    </sql>
+
+    <resultMap id="UserRoleRelation" type="com.tikie.shiro.entity.UserRoleRelation" />
+    <!-- 用户结果集 -->
+    <resultMap id="User" type="com.tikie.shiro.entity.User">
+        <id property="id" column="id" />
+        <result property="account" column="account"/>
+        <result property="pwd" column="pwd"/>
+        <result property="nickName" column="nickName"/>
+        <result property="photo" column="photo"/>
+        <result property="sign" column="sign"/>
+        <result property="skin" column="skin"/>
+        <result property="score" column="score"/>
+        <result property="honor" column="honor"/>
+        <result property="NID" column="NID"/>
+        <result property="phone" column="phone"/>
+        <result property="email" column="email"/>
+        <result property="company" column="company"/>
+        <result property="title" column="title"/>
+        <result property="position" column="position"/>
+        <result property="QQ" column="QQ"/>
+        <result property="weChat" column="weChat"/>
+        <result property="QRCode" column="QRCode"/>
+        <result property="microBlog" column="microBlog"/>
+        <result property="renRen" column="renRen"/>
+        <result property="twitter" column="twitter"/>
+        <result property="facebook" column="facebook"/>
+        <result property="postcode" column="postcode"/>
+        <result property="nowAddress" column="nowAddress"/>
+        <result property="homeland" column="homeland"/>
+
+        <result property="isActive" column="isActive"/>
+        <result property="isDelete" column="isDelete"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="updatedBy" column="updatedBy"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="note" column="note"/>
+        <result property="e" column="e"/>
+        <collection property="roleRelationList" ofType="UserRoleRelation">
+            <id property="userId" column="userId" />
+            <id property="roleId" column="roleId" />
+
+            <result property="isActive" column="r_isActive"/>
+            <result property="isDelete" column="r_isDelete"/>
+            <result property="createdBy" column="r_createdBy"/>
+            <result property="updatedBy" column="r_updatedBy"/>
+            <result property="createdTime" column="r_createdTime"/>
+            <result property="updatedTime" column="r_updatedTime"/>
+            <result property="note" column="r_note"/>
+        </collection>
+    </resultMap>
+
+    <!-- 获取用户信息及用户权限关系信息 -->
+    <select id="getById" parameterType="int" resultMap="User">
+        select
+              <include refid="userColumns"/>
+        from `shiro_user` A
+        left outer join `shiro_user_role_relation` R on R.isDelete='0' and R.isActive='1' and A.id = R.userId
+        where A.isDelete='0' and A.isActive='1' and A.id = #{id}
+    </select>
+
+
+</mapper>

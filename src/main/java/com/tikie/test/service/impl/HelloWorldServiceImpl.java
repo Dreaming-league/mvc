@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * @targget     测试web响应测试Controller类
+ * @targget     HelloWorldServiceImpl
  *
  * @author      tikie
  * @date        2016-09-28

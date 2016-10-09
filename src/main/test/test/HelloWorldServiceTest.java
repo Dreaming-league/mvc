@@ -30,7 +30,7 @@ public class HelloWorldServiceTest {
      * @target  测试mybatis的获取数据能力
      */
     public void testGetById(){
-        HelloWorld hello = helloWorldService.getById(0);
+        HelloWorld hello = helloWorldService.getById(3);
         System.out.println(hello.getMessage());
     }
 

@@ -18,7 +18,7 @@
     <!--<import resource="applicationContext-dubbo.xml"/>-->
 
     <!-- 使用annotation 自动注册bean,并保证@Required,@Autowired的属性被注入 -->
-    <context:component-scan base-package="com.tikie.test" />
+    <context:component-scan base-package="com.tikie" />
     <!-- 数据源配置,在测试环境使用JDBC直接连接 -->
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="${jdbc.driverClassName}" />
@@ -37,13 +37,13 @@
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描entity目录 -->
-        <property name="typeAliasesPackage" value="com.tikie.test.entity" />
+        <property name="typeAliasesPackage" value="com.tikie.test.entity,com.tikie.shiro.entity" />
         <!-- 显式指定Mapper文件位置 -->
         <property name="mapperLocations" value="classpath:/mybatis/**/*Mapper.xml" />
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.tikie.test.mapper" />
+        <property name="basePackage" value="com.tikie.*.mapper" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
         <property name="annotationClass" value="com.tikie.test.mapper.MyBatisRepository"/>
     </bean>

@@ -59,6 +59,5 @@ public interface HelloWorldService {
      */
     List<HelloWorld> getAll();
 
-
     //分页接口
 }

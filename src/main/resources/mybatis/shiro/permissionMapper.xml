@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.tikie.shiro.mapper.PermissionMapper">
+    <sql id="permissionColumns">
+        A.*,
+        R.roleId as roleId,
+        R.permissionId as permissionId,
+
+        R.isActive as r_isActive,
+        R.isDelete as r_isDelete,
+        R.createdBy as r_createdBy,
+        R.updatedBy as r_updatedBy,
+        R.createdTime as r_createdTime,
+        R.updatedTime as r_updatedTime,
+        R.note as r_note
+    </sql>
+
+    <resultMap id="RolePermissionRelation" type="com.tikie.shiro.entity.RolePermissionRelation" />
+    <!-- 用户结果集 -->
+    <resultMap id="Permission" type="com.tikie.shiro.entity.Permission">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="permission" column="permission"/>
+        <result property="type" column="type"/>
+
+        <result property="isActive" column="isActive"/>
+        <result property="isDelete" column="isDelete"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="updatedBy" column="updatedBy"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="note" column="note"/>
+        <result property="e" column="e"/>
+        <collection property="roleRelationList" ofType="RolePermissionRelation">
+            <id property="roleId" column="roleId" />
+            <id property="permissionId" column="permissionId" />
+
+            <result property="isActive" column="r_isActive"/>
+            <result property="isDelete" column="r_isDelete"/>
+            <result property="createdBy" column="r_createdBy"/>
+            <result property="updatedBy" column="r_updatedBy"/>
+            <result property="createdTime" column="r_createdTime"/>
+            <result property="updatedTime" column="r_updatedTime"/>
+            <result property="note" column="r_note"/>
+        </collection>
+    </resultMap>
+
+    <!-- 获取用户信息及用户权限关系信息 -->
+    <select id="getById" parameterType="int" resultMap="Permission">
+        select
+        <include refid="permissionColumns"/>
+        from `shiro_permission` A
+        left outer join `shiro_role_permission_relation` R on R.isDelete='0' and R.isActive='1' and A.id = R.permissionId
+        where A.isDelete='0' and A.isActive='1' and A.id = #{id}
+    </select>
+
+
+</mapper>
