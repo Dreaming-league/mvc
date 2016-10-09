@@ -36,12 +36,16 @@ public class HelloWorldController{
         3、将命令对象传入业务对象进行业务处理
         4、选择下一个页面
         */
-
+        ModelAndView mv = new ModelAndView();
         HelloWorld hello = helloWorldService.getById(0);
 
-        ModelAndView mv = new ModelAndView();
-        //添加模型数据 可以是任意的POJO对象
-        mv.addObject("message", hello.getMessage());
+        if(hello!=null){
+            //添加模型数据 可以是任意的POJO对象
+            mv.addObject("message", hello.getMessage());
+        }else{
+            mv.addObject("message","数据库还没有欢迎信息");
+        }
+
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
         mv.setViewName("hello");
         return mv;
