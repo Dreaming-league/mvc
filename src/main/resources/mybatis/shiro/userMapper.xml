@@ -75,5 +75,14 @@
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
+    <!-- 获取用户信息及用户权限关系信息 -->
+    <select id="getByAccount" resultMap="User">
+        select
+        <include refid="userColumns"/>
+        from `shiro_user` A
+        left outer join `shiro_user_role_relation` R on R.isDelete='0' and R.isActive='1' and A.id = R.userId
+        where A.isDelete='0' and A.isActive='1' and A.account = #{account}
+    </select>
+
 
 </mapper>

@@ -11,10 +11,12 @@ import com.tikie.shiro.entity.User;
  */
 public interface UserService {
     /**
-     * @target  测试用ID查询友好信息
+     * @target  用ID查询用户信息
      * @param   id
      *
-     * @return  HelloWorld
+     * @return  User
      */
     User getById(Integer id);
+
+    User getByAccount(String account);
 }

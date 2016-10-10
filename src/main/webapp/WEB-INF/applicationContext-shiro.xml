@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!-- 继承自AuthorizingRealm的自定义Realm,即指定Shiro验证用户登录的类为自定义的ShiroDbRealm.java -->
+    <bean id="myShiro" class="com.tikie.shiro.service.MyShiro"/>
+    <bean id="userService" class="com.tikie.shiro.service.impl.UserServiceImpl"/>
+    <bean id="roleService" class="com.tikie.shiro.service.impl.RoleServiceImpl"/>
+    <bean id="permissionService" class="com.tikie.shiro.service.impl.PermissionServiceImpl"/>
+
+    <!-- 会话管理器 -->
+    <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+        <!-- session的失效时长，单位毫秒 -->
+        <property name="globalSessionTimeout" value="600000"/>
+        <!-- 删除失效的session -->
+        <property name="deleteInvalidSessions" value="true"/>
+    </bean>
+
+    <!-- 配置权限管理器 -->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <!-- ref对应我们写的realm  MyShiro -->
+        <property name="realm" ref="myShiro"/>
+        <!-- 使用下面配置的缓存管理器 -->
+        <property name="cacheManager" ref="cacheManager"/>
+        <property name="sessionManager" ref="sessionManager" />
+    </bean>
+
+    <!-- 配置shiro的过滤器工厂类，id- shiroFilter要和我们在web.xml中配置的过滤器一致 -->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!-- 调用我们配置的权限管理器 -->
+        <property name="securityManager" ref="securityManager"/>
+        <!-- 配置我们的登录请求地址 -->
+        <property name="loginUrl" value="/f/login"/>
+        <!-- 配置我们在登录页登录成功后的跳转地址，如果你访问的是非/login地址，则跳到您访问的地址 -->
+        <property name="successUrl" value="/f/index"/>
+        <!-- 如果您请求的资源不再您的权限范围，则跳转到/403请求地址 -->
+        <property name="unauthorizedUrl" value="/403"/>
+        <!-- 权限配置 -->
+        <property name="filterChainDefinitions">
+            <value>
+                <!-- anon表示此地址不需要任何权限即可访问 -->
+                /static/**=anon
+                /u/**=anon
+
+                <!-- 退出拦截，请求/f/logout执行退出操作 -->
+                /f/logout = logout
+                /test/hello = perms[user:query]
+
+                <!-- perms[user:query]表示访问此连接需要权限为user:query的用户 -->
+                /user=perms[user:query]
+                <!-- roles[manager]表示访问此连接需要用户的角色为manager -->
+                /user/add=roles[manager]
+                /user/del/**=roles[admin]
+                /user/edit/**=roles[manager]
+                <!--所有的请求(除去配置的静态资源请求或请求地址为anon的请求)都要通过登录验证,如果未登录则跳到/f/login-->
+                /** = authc
+            </value>
+        </property>
+    </bean>
+
+
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
+
+    <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->
+    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean>
+
+    <!-- 缓存管理 -->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
+
+
+    <!-- 开启Shiro的注解(如@RequiresRoles，@RequiresPermissions)，需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 -->
+    <!-- @RequiresPermissions("item:query") -->
+    <!-- 开启aop，对类代理 -->
+    <aop:config proxy-target-class="true"></aop:config>
+    <!--<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator"></bean>-->
+
+    <!-- 开启shiro注解支持 -->
+    <bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+        <property name="securityManager" ref="securityManager" />
+    </bean>
+</beans>

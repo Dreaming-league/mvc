@@ -16,7 +16,7 @@
     <!-- 启动注解 -->
     <mvc:annotation-driven/>
     <!-- 扫描有注解的包 -->
-    <context:component-scan base-package="com.tikie.test"/>
+    <context:component-scan base-package="com.tikie"/>
 
     <!-- 处理器 -->
     <!--<bean name="/hello" class="com.tikie.test.web.HelloWorldController"/>-->

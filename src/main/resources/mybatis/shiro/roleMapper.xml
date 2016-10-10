@@ -32,6 +32,7 @@
     <resultMap id="Role" type="com.tikie.shiro.entity.Role">
         <id property="id" column="id" />
         <result property="name" column="name"/>
+        <result property="permission" column="permission"/>
 
         <result property="isActive" column="isActive"/>
         <result property="isDelete" column="isDelete"/>

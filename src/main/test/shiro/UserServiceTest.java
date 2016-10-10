@@ -29,4 +29,12 @@ public class UserServiceTest {
         System.out.println(user.getAccount());
         System.out.println(user.getRoleRelationList().toString());
     }
+
+    @Test
+    public void testGetByAccount(){
+        User user = userService.getByAccount("290315636@qq.com");
+        System.out.println(user.getId());
+        System.out.println(user.getAccount());
+        System.out.println(user.getRoleRelationList().toString());
+    }
 }
