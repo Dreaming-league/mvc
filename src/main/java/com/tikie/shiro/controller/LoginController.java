@@ -3,18 +3,21 @@ package com.tikie.shiro.controller;
 import com.tikie.shiro.entity.User;
 import com.tikie.shiro.service.UserService;
 import com.tikie.shiro.vo.Login;
+import com.tikie.util.security.EncrypMD5;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.authz.annotation.RequiresAuthentication;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 
 /**
  * @targget     登录Controller类
@@ -44,7 +47,7 @@ public class LoginController {
     }
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ModelAndView login(Login login,HttpSession session){
+    public ModelAndView login(Login login,HttpSession session) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         ModelAndView mv = new ModelAndView();
         //输入非空校验
         if(StringUtils.isEmpty(login.getAccount()) || StringUtils.isEmpty(login.getPwd())){
@@ -54,13 +57,14 @@ public class LoginController {
         }
 
         User user = userService.getByAccount(login.getAccount());
-        if(user ==null || !user.getPwd().equals(login.getPwd())){
+        if(user ==null || !user.getPwd().equals(new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())))){
             session.setAttribute("message","用户不存在或密码错误");
             mv.setViewName("redirect:/f/login");
             return mv;
         }else{
             //获取密码令牌并验证
-            UsernamePasswordToken token = new UsernamePasswordToken(login.getAccount(), login.getPwd());
+            UsernamePasswordToken token = null;
+            token = new UsernamePasswordToken(login.getAccount(), new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())));
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()){
                 //使用shiro来验证
@@ -76,10 +80,10 @@ public class LoginController {
         }
     }
 
-
+    @RequiresAuthentication
     @RequestMapping("/logout")
-    public String logout(){
+    public ModelAndView logout(){
         SecurityUtils.getSubject().logout();
-        return "redirect:/f/login";
+        return new ModelAndView("hello");
     }
 }

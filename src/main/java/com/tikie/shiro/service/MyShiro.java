@@ -1,6 +1,7 @@
 package com.tikie.shiro.service;
 
 import com.tikie.shiro.entity.*;
+import com.tikie.util.security.EncrypMD5;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -10,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.*;
 
 /**
@@ -105,14 +108,20 @@ public class MyShiro extends AuthorizingRealm {
      * @return  AuthorizationInfo
      */
     @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) {
         //UsernamePasswordToken对象用来存放提交的登录信息
         UsernamePasswordToken token=(UsernamePasswordToken) authenticationToken;
         //查出是否有此用户
         User user=userService.getByAccount(token.getUsername());
         if(user!=null){
             //若存在，将此用户存放到登录认证info中
-            return new SimpleAuthenticationInfo(user.getAccount(), user.getPwd(), getName());
+            try {
+                return new SimpleAuthenticationInfo(user.getAccount(), user.getPwd(), getName());
+            } catch (AuthenticationException e) {
+//                e.printStackTrace();
+                //验证不通过
+                return null;
+            }
         }
         return null;
     }

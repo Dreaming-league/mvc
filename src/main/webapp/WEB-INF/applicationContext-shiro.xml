@@ -44,8 +44,8 @@
                 /u/**=anon
 
                 <!-- 退出拦截，请求/f/logout执行退出操作 -->
-                /f/logout = logout
-                /test/hello = perms[user:query]
+                /f/logout=logout
+                /test/hello=perms[user:query]
 
                 <!-- perms[user:query]表示访问此连接需要权限为user:query的用户 -->
                 /user=perms[user:query]
@@ -62,12 +62,8 @@
 
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 
-    <!-- 数据库保存的密码是使用MD5算法加密的，所以这里需要配置一个密码匹配对象 -->
-    <bean id="credentialsMatcher" class="org.apache.shiro.authc.credential.Md5CredentialsMatcher"></bean>
-
     <!-- 缓存管理 -->
     <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
-
 
     <!-- 开启Shiro的注解(如@RequiresRoles，@RequiresPermissions)，需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 -->
     <!-- @RequiresPermissions("item:query") -->
