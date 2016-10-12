@@ -47,7 +47,21 @@ public class HelloWorldController{
         }
 
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-        mv.setViewName("hello");
+        mv.setViewName("hello.jsp");
+        return mv;
+    }
+
+    @RequestMapping(value = "/beet",method = RequestMethod.GET)
+    public ModelAndView beetMapper(){
+        ModelAndView mv = new ModelAndView("hello.html");
+        HelloWorld hello = helloWorldService.getById(0);
+
+        if(hello!=null){
+            //添加模型数据 可以是任意的POJO对象
+            mv.addObject("message", hello.getMessage());
+        }else{
+            mv.addObject("message","数据库还没有欢迎信息");
+        }
         return mv;
     }
 }

@@ -9,6 +9,9 @@
     <!-- 表示将请求的URL和Bean名字映射，如URL为 “上下文/hello”，则Spring配置文件必须有一个名字为“/hello”的Bean，上下文默认忽略 -->
     <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 
+    <!-- 处理器 -->
+    <!--<bean name="/hello" class="com.tikie.test.web.HelloWorldController"/>-->
+
     <!-- HandlerAdapter -->
     <!-- 表示所有实现了org.springframework.web.servlet.mvc.Controller接口的Bean可以作为Spring Web MVC中的处理器。如果需要其他类型的处理器可以通过实现HadlerAdapter来解决。 -->
     <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"/>
@@ -18,13 +21,59 @@
     <!-- 扫描有注解的包 -->
     <context:component-scan base-package="com.tikie"/>
 
-    <!-- 处理器 -->
-    <!--<bean name="/hello" class="com.tikie.test.web.HelloWorldController"/>-->
-
-    <!-- ViewResolver -->
+    <!-- ViewResolver for JSP -->
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="viewNames" value="*.jsp" />
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
         <property name="prefix" value="/WEB-INF/views/jsp/"/>
-        <property name="suffix" value=".jsp"/>
+        <property name="suffix" value=""/>
+
+        <property name="contentType" value="text/html;charset=UTF-8"/>
+        <property name="order" value="1"/>
     </bean>
+
+    <!-- 定义beetl模板 -->
+    <bean id="beetlConfig" class="org.beetl.ext.spring.BeetlGroupUtilConfiguration" init-method="init">
+        <property name="root" value="/"/>
+    </bean>
+    <bean id="viewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
+        <property name="viewNames" value="*.html" />
+        <property name="cache" value="true" />
+        <property name="prefix" value="/WEB-INF/views/beetl/"/>
+        <property name="suffix" value="" />
+        <property name="order" value="2"/>
+    </bean>
+
+    <!-- 定义无Controller的path<->view直接映射 -->
+    <mvc:view-controller path="/" view-name="index" />
+    <mvc:view-controller path="/index" view-name="index" />
+    <mvc:view-controller path="/f/index" view-name="index" />
+    <mvc:view-controller path="/welcome" view-name="welcome" />
+    <mvc:view-controller path="/home" view-name="welcome" />
+    <mvc:view-controller path="/uncaughtException" />
+
+    <!-- 全局异常配置 start -->
+    <bean id="exceptionResolver"
+          class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <property name="exceptionMappings">
+            <props>
+                <prop key="org.apache.shiro.authz.UnauthorizedException">error/403.jsp</prop>
+                <prop key="java.lang.Throwable">error/500.jsp</prop>
+            </props>
+        </property>
+        <property name="statusCodes">
+            <props>
+                <prop key="500">500</prop>
+                <prop key="404">404</prop>
+                <prop key="403">403</prop>
+            </props>
+        </property>
+        <!-- 设置日志输出级别，不定义则默认不输出警告等错误日志信息 -->
+        <property name="warnLogCategory" value="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver" />
+        <!-- 默认错误页面，当找不到上面mappings中指定的异常对应视图时，使用本默认配置 -->
+        <property name="defaultErrorView" value="error/500.jsp" />
+        <!-- 默认HTTP状态码 ，返回错误默认设置的状态码 -->
+        <property name="defaultStatusCode" value="200" />
+    </bean>
+    <!-- 全局异常配置 end -->
 </beans>

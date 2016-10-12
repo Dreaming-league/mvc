@@ -42,7 +42,7 @@ public class LoginController {
     public ModelAndView toLogin(){
         ModelAndView mv = new ModelAndView();
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-        mv.setViewName("login");
+        mv.setViewName("login.jsp");
         return mv;
     }
 
@@ -68,14 +68,15 @@ public class LoginController {
             Subject currentUser = SecurityUtils.getSubject();
             if (!currentUser.isAuthenticated()){
                 //使用shiro来验证
-                token.setRememberMe(true);
+                if(login.getRememberMe()!=null &&login.getRememberMe().equals("1"))
+                    token.setRememberMe(true);
                 currentUser.login(token);//验证角色和权限
             }
 
             //验证通过
             mv.addObject("message", "登录成功");
             //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-            mv.setViewName("index");
+            mv.setViewName("index.jsp");
             return mv;
         }
     }
@@ -84,6 +85,6 @@ public class LoginController {
     @RequestMapping("/logout")
     public ModelAndView logout(){
         SecurityUtils.getSubject().logout();
-        return new ModelAndView("hello");
+        return new ModelAndView("hello.jsp");
     }
 }

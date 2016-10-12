@@ -18,4 +18,5 @@ public class Login {
 
     private String account;         //账号
     private String pwd;             //密码
+    private String rememberMe;      //记住我
 }
