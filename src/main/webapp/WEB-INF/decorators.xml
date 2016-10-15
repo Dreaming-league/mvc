@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<decorators defaultdir="/WEB-INF/views/layout">
+    <!-- 不需要过滤的请求 -->
+    <excludes>
+        <pattern>/static/*</pattern>
+        <pattern>/remote/*</pattern>
+        <pattern>/f/login</pattern>
+    </excludes>
+
+    <!-- 默认装饰页面, 在需要装饰的页面增加<meta name="decorator" content="default"/> -->
+    <decorator name="default" page="default.jsp">
+        <pattern>/f/*</pattern>
+    </decorator>
+    <!-- 下面可以写多个 -->
+
+
+
+
+</decorators>

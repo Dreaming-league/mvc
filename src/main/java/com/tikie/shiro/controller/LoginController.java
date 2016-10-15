@@ -81,8 +81,9 @@ public class LoginController {
         }
     }
 
+
     @RequiresAuthentication
-    @RequestMapping("/logout")
+    @RequestMapping(value = "/logout",method = RequestMethod.GET)
     public ModelAndView logout(){
         SecurityUtils.getSubject().logout();
         return new ModelAndView("hello.jsp");

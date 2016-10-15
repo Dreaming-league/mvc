@@ -1,0 +1,13 @@
+<span>Hello world message from template</span>
+${test}
+
+
+
+<!--:
+/*输出一个json列表*/
+-->
+${[1,2,3]}
+<!--:
+/*输出一个json map，} 需要加上\*/
+-->
+${{key:1,value:2 \}}

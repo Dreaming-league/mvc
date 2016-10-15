@@ -12,12 +12,12 @@
     </shiro:guest>
 
     <shiro:user>
-        admin
+        已登录
     </shiro:user>
 
     <%--Hello, <shiro:principal/>, how are you today?--%>
     <shiro:hasRole name="defaultRole">
-        <a href="#">后台管理</a>
+        <a href="/test/beet">测试 Beetl</a>
     </shiro:hasRole>
 
 
