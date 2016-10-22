@@ -158,7 +158,11 @@
       <version>2.4.2</version>
     </dependency>
 
-
+    <dependency>
+      <groupId>com.alibaba</groupId>
+      <artifactId>fastjson</artifactId>
+      <version>1.2.18</version>
+    </dependency>
 
 
 
