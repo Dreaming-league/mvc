@@ -11,7 +11,6 @@
     [gitbook](https://www.gitbook.com/book/290315636/springmvc/details "点击查看")
     
     
-    
 ##三. 技术方向
     javaWeb相关技术
     
@@ -21,10 +20,20 @@
     
 ##四. 更新
     1.0.1 更改为注解模式,方法已同步到gitbook
-    1.0.2 增加mybatis-spring技术,实现数据持久化(c3p0为数据源连接池实现,连接mysql5.6+数据库)
-    1.0.3 增加shiro权限控制和beetl\jsp视图支持
     
-##五. 开发规范
+    1.1.1 增加mybatis-spring技术,实现数据持久化(c3p0为数据源连接池实现,连接mysql5.6+数据库)
+    
+    1.2.1 增加shiro权限控制和beetl\jsp视图支持
+    1.2.2 增加异步请求返回数据封装格式
+    
+    1.3.1 数据库时间字段默认值统一为当前时间
+          更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
+  
+##五. 下次更新 
+    后台管理模块  
+        
+    
+##六. 开发规范
 
     说明:
     
@@ -44,10 +53,12 @@
     数据库规范:
     
         1. 数据库字段尽量不做非空,外健限制(限制在代码实现)
-        2. 各个表的ID统一为32位binint
+        2. 各个表的ID统一为32位bigint
         3. 以后新建的表统一增加模块前缀,如:test_helloworld(表明全小写,字段名驼峰)
         
     接口开发规范:
     
         1. 开发完每个接口后必需写对应的测试类,确保无bug
         2. 接口采取见名知义\言简意赅的原则,如:getById(或get),insert,delete,update,getAll,getSimilarByMessage等
+        
+##七.
