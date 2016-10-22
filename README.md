@@ -61,4 +61,5 @@
         1. 开发完每个接口后必需写对应的测试类,确保无bug
         2. 接口采取见名知义\言简意赅的原则,如:getById(或get),insert,delete,update,getAll,getSimilarByMessage等
         
-##七.
+##七.加入我们
+    直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。
