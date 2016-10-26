@@ -1,4 +1,4 @@
-package com.tikie.util.security;
+package com.tikie.common.util.security;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;

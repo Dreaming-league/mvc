@@ -28,7 +28,9 @@
     
     1.3.1 数据库时间字段默认值统一为当前时间
           更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
-  
+          
+    1.4.1 更新常用工具类，添加允许跨域访问过滤器
+    
 ##五. 下次更新 
     后台管理模块  
         

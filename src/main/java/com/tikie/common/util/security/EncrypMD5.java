@@ -1,4 +1,4 @@
-package com.tikie.util.security;
+package com.tikie.common.util.security;
 
 import sun.misc.BASE64Encoder;
 

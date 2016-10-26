@@ -23,3 +23,7 @@ target/mvc.war
 /*.iml
 /.classpath
 /*.eml
+
+#eclipse产生的文件
+.project
+.settings/

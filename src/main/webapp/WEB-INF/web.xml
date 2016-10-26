@@ -56,4 +56,14 @@
         <servlet-name>dispatcher</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
+
+    <!-- 允许跨域访问 -->
+    <filter>
+        <filter-name>webContextFilter</filter-name>
+        <filter-class>com.tikie.shiro.filter.WebContextFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>webContextFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 </web-app>

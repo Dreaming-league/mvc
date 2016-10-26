@@ -3,7 +3,7 @@ package com.tikie.shiro.controller;
 import com.tikie.shiro.entity.User;
 import com.tikie.shiro.service.UserService;
 import com.tikie.shiro.vo.Login;
-import com.tikie.util.security.EncrypMD5;
+import com.tikie.common.util.security.EncrypMD5;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;

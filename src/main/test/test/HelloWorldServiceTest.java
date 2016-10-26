@@ -30,18 +30,16 @@ public class HelloWorldServiceTest {
      * @target  测试mybatis的获取数据能力
      */
     public void testGetById(){
-        HelloWorld hello = helloWorldService.getById(3);
-        System.out.println(hello.getMessage());
+//        HelloWorld hello = helloWorldService.getById(1);
+//        System.out.println(hello.getMessage());
     }
 
     @Test
     public void testInsert(){
-        HelloWorld hello = new HelloWorld();
-        hello.setMessage("你好吗?");
-
-        System.out.println(helloWorldService.insert(hello));
-
-        System.out.println(hello.getId());
+//        HelloWorld hello = new HelloWorld();
+//        hello.setMessage("你好吗?");
+//        System.out.println(helloWorldService.insert(hello));
+//        System.out.println(hello.getId());
     }
 
     @Test
@@ -51,10 +49,10 @@ public class HelloWorldServiceTest {
 
     @Test
     public void testUpdate(){
-        HelloWorld hello = new HelloWorld();
-        hello.setId(3);
-        hello.setMessage("更改后的信息");
-        System.out.print(helloWorldService.update(hello));
+//        HelloWorld hello = new HelloWorld();
+//        hello.setId(3);
+//        hello.setMessage("更改后的信息");
+//        System.out.print(helloWorldService.update(hello));
     }
 
     @Test

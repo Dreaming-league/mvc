@@ -1,4 +1,4 @@
-package com.tikie.util.response;
+package com.tikie.common.util.response;
 
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
