@@ -12,7 +12,7 @@
     </shiro:guest>
 
     <shiro:user>
-        已登录
+        ${loginUser.nickName}
     </shiro:user>
 
     <%--Hello, <shiro:principal/>, how are you today?--%>

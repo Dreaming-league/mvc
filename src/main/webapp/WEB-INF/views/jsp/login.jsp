@@ -11,7 +11,7 @@
     <form method="post" action="/f/login">
         <input name="account" type="text" placeholder="账号">
         <input name="pwd" type="text" placeholder="密码">
-        <input name="rememberMe" type="checkbox" value="1" checked="true">
+        <input name="rememberMe" type="checkbox" value="1" checked="true">记住我
         <button type="reset">重置</button>
         <button type="submit">提交</button>
     </form>

@@ -8,7 +8,7 @@
     组织发起者：Tikie
     QQ:290313636
     QQ群：282781158
-    [gitbook](https://www.gitbook.com/book/290315636/springmvc/details "点击查看")
+    [gitbook](https://www.gitbook.com/book/290315636/springmvc/details)
     
     
 ##三. 技术方向

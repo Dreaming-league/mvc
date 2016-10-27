@@ -21,7 +21,7 @@ public class Role {
     private Integer id;
 
     private String name;            //角色名称
-    private String permission;        //权限标识
+    private String permission;      //权限标识
 
     private List<UserRoleRelation>          userRelationList;          //被哪些用户关系拥有
     private List<RolePermissionRelation>    permissionRelationList;    //拥有哪些权限关系

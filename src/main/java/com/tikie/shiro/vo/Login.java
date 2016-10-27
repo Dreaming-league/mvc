@@ -19,4 +19,9 @@ public class Login {
     private String account;         //账号
     private String pwd;             //密码
     private String rememberMe;      //记住我
+
+    private String nickName;        //昵称:页面显示
+    private String photo;           //头像
+    private String sign;            //签名
+
 }
