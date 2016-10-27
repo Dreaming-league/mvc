@@ -6,7 +6,7 @@
     
     2. bootstrap页面布局
     
-    3. requirejs控制引入的js
+    3. requirejs控制引入的js ----[requirejs](http://www.requirejs.cn/home.html) 
     
     4.jquery相关组件实现操作友好性、简便性
 
