@@ -34,7 +34,7 @@
     1.5.1 项目增加develop和proposed分支，在develop分支上开发，确定没问题了提交到proposed分支，项目负责人确定没问题后更新proposed分支到master主分支
     
 ##五. 下次更新 
-    后台管理模块  
+    后台管理模块之权限管理  
         
     
 ##六. 开发规范
@@ -46,6 +46,21 @@
         3. 个人维护个人的类,不要轻易更改别人的代码
         4. 每次打开项目先同步线上代码,(先git pull),每次确定无bug后方可提交代码到线上
         
+    代码更新规范：
+        1. 第一次拉取代码:git clone https://github.com/Dreaming-league/mvc.git
+        2. 在本地建立本地分支练习、修改:git branch -b develop
+        3. 拉取线上开发最新代码到本地:git pull origin develop(从远程获取最新版本并merge到本地,存在冲突就解决冲突)
+        4. 查看代码修改状态：git status
+        5. 提交本地代码：1）git add .(把本地所有修改压入提交本地仓库的队列或逐个压入,后跟文件路径)
+                       2) git commit -m "更新注释，提交说明 "(提交到本地git仓库)
+                       3) git commit -a . -m "更新注释，提交说明" (简化操作，作用同1、2) 
+        6. 更新到线上develop分支：git push origin develop
+        7. 确定代码不再更改后同步到线上proposed(建议)分支：git push origin proposed
+                   
+        8. 最终项目负责人把稳定版同步到主分支master(有权限限制哦)：git push origin master
+                   
+        ps:关于git的相关指令等操作可自我百度学习
+                      
     基本规范:
     
         1. 写上类注释和方法注释,最好也上逻辑流程注释(可参考HelloWorldController的相关注释)
