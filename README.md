@@ -33,6 +33,8 @@
     
     1.5.1 项目增加develop和proposed分支，在develop分支上开发，确定没问题了提交到proposed分支，项目负责人确定没问题后更新proposed分支到master主分支
     
+    1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
+    
 ##五. 下次更新 
     后台管理模块之权限管理  
         
