@@ -1,0 +1,3 @@
+[submodule "src/main/webapp/static/static"]
+	path = src/main/webapp/static/static
+	url = https://github.com/Dreaming-league/static.git
