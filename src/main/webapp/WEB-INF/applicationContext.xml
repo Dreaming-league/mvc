@@ -30,13 +30,32 @@
         <property name="numHelperThreads" value="${jdbc.numHelperThreads}" />
     </bean>
 
+    <!-- Hikaricp数据连接池 -->
+    <bean id="hikariDataSource"
+          class="com.zaxxer.hikari.HikariDataSource" destroy-method="shutdown">
+        <constructor-arg>
+            <bean class="com.zaxxer.hikari.HikariConfig">
+                <property name="driverClassName" value="${hikaricp.jdbc.driverClassName}"/>
+                <property name="jdbcUrl" value="${hikaricp.url}"/>
+                <property name="username" value="${hikaricp.username}"/>
+                <property name="password" value="${hikaricp.password}"/>
+                <property name="connectionTestQuery" value="${hikaricp.connectionTestQuery}"/>
+                <property name="connectionTimeout" value="${hikaricp.connectionTimeout}"/>
+                <property name="idleTimeout" value="${hikaricp.idleTimeout}"/>
+                <property name="maxLifetime" value="${hikaricp.maxLifetime}"/>
+                <property name="maximumPoolSize" value="${hikaricp.maximumPoolSize}"/>
+                <property name="minimumIdle" value="${hikaricp.minimumIdle}"/>
+            </bean>
+        </constructor-arg>
+    </bean>
+
     <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
         <property name="databasePlatform" value="${hibernate.dialect}"/>
     </bean>
 
     <!-- Jpa Entity Manager 配置 -->
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="dataSource">
-        <property name="dataSource" ref="dataSource"/>
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean" depends-on="hikariDataSource">
+        <property name="dataSource" ref="hikariDataSource"/>
         <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
         <property name="packagesToScan" value="com.tikie"/>
         <property name="jpaProperties">
@@ -86,7 +105,7 @@
 
     <!-- MyBatis配置 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
+        <property name="dataSource" ref="hikariDataSource" />
         <!-- 自动扫描entity目录 -->
         <property name="typeAliasesPackage" value="com.tikie.test.entity,com.tikie.shiro.entity" />
         <!-- 显式指定Mapper文件位置 -->

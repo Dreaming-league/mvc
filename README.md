@@ -35,6 +35,8 @@
     
     1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
     
+    1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
+    
 ##五. 下次更新 
     后台管理模块之权限管理  
         
