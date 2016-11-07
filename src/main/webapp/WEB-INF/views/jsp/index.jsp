@@ -12,10 +12,9 @@
     </shiro:guest>
 
     <shiro:user>
-        ${loginUser.nickName}
+
     </shiro:user>
 
-    <%--Hello, <shiro:principal/>, how are you today?--%>
     <shiro:hasRole name="defaultRole">
         <a href="/test/beet">测试 Beetl</a>
     </shiro:hasRole>

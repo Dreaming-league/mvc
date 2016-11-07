@@ -11,8 +11,8 @@ import eu.bitwalker.useragentutils.UserAgent;
 
 /**
  * 用户代理字符串识别工具
- * @author ThinkGem
- * @version 2014-6-13
+ * @author  tikie
+ * @since   2016-10-26
  */
 public class UserAgentUtils {
 

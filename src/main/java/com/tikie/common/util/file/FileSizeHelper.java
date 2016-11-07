@@ -7,8 +7,8 @@ import java.text.DecimalFormat;
  * 文件大小工具类.
  * </p>
  *
- * @author  tikie
- * @version 1.0
+ * @since   2016-10-22
+ * @version 1.0.0
  */
 public class FileSizeHelper {
 	public static long ONE_KB = 1024;

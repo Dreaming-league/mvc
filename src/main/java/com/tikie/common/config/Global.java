@@ -16,7 +16,8 @@ import org.springframework.core.io.DefaultResourceLoader;
 /**
  * 全局配置类
  * @author 	tikie
- * @version 2016-10-22
+ * @since 	2016-10-22
+ * @version 1.0.0
  */
 public class Global {
 

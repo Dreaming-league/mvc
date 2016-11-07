@@ -8,6 +8,13 @@
     <!-- Web Configuration -->
     <context:property-placeholder location="classpath*:/config/dev/*.properties" ignore-resource-not-found="true" system-properties-mode="OVERRIDE" />
 
+    <!-- 加载配置属性文件 -->
+    <context:property-placeholder ignore-unresolvable="true" location="classpath:/config/dev/*.properties" />
+
+    <!-- 加载应用属性实例，可通过  @Value("#{APP_PROP['jdbc.driver']}") String jdbcDriver 方式引用 -->
+    <util:properties id="APP_PROP" location="classpath:/config/dev/*.properties" local-override="true"/>
+
+
     <!-- c3p0数据连接池,在lib目录中与Hibernate一起发布 -->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
           destroy-method="close">
@@ -112,5 +119,9 @@
         <property name="mapperLocations" value="classpath:mybatis/**/*Mapper.xml" />
     </bean>
 
+    <!-- 缓存配置 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:${ehcache.configFile}" />
+    </bean>
 
 </beans>

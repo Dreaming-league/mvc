@@ -8,8 +8,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 线程相关工具类.
- * @author calvin
- * @version 2013-01-15
+ * @author  tikie
+ * @since   2016-10-26
  */
 public class Threads {
 

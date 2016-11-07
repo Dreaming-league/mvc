@@ -22,7 +22,7 @@ import org.springframework.web.servlet.LocaleResolver;
 /**
  * 字符串工具类, 继承org.apache.commons.lang3.StringUtils类
  * @author  tikie
- * @version 2016-10-26
+ * @since 2016-10-26
  */
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	

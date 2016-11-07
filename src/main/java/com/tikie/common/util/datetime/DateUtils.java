@@ -11,7 +11,9 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 /**
  * 日期工具类, 继承org.apache.commons.lang.time.DateUtils类
  * @author 	tikie
- * @version 2016-10-22
+ * @since   2016-10-22
+ * @version 1.0.0
+ * @see 	"org.apache.commons.lang.time.DateUtils"
  */
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	

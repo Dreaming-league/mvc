@@ -73,11 +73,6 @@ public class LoginController {
                 currentUser.login(token);//验证角色和权限
             }
 
-            login.setNickName(user.getNickName());
-            login.setPhoto(user.getPhoto());
-            login.setSign(user.getSign());
-
-            session.setAttribute("loginUser",login);
             //验证通过
             mv.addObject("message", "登录成功");
             //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面

@@ -25,6 +25,7 @@
     
     1.2.1 增加shiro权限控制和beetl\jsp视图支持
     1.2.2 增加异步请求返回数据封装格式
+    1.2.3 更新shiro-principal携带的用户信息
     
     1.3.1 数据库时间字段默认值统一为当前时间
           更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
@@ -36,6 +37,8 @@
     1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
     
     1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
+    
+    1.8.1 service层增加缓存处理
     
 ##五. 下次更新 
     后台管理模块之权限管理  

@@ -14,9 +14,9 @@ import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * 
- * @author Andy.Chen
- * @mail Chenjunjun.ZJ@gmail.com
+ *
+ * @author  tikie
+ * @since   2016-10-26
  * 
  */
 public class StreamUtils {

@@ -51,7 +51,7 @@
         <!-- ref对应我们写的realm  MyShiro -->
         <property name="realm" ref="myShiro"/>
         <!-- 使用下面配置的缓存管理器 -->
-        <property name="cacheManager" ref="cacheManager"/>
+        <property name="cacheManager" ref="shiroCacheManager"/>
         <property name="sessionManager" ref="sessionManager" />
         <property name="rememberMeManager" ref="rememberMeManager"/>
     </bean>
@@ -93,12 +93,7 @@
     <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"></bean>
 
     <!-- 缓存管理 -->
-    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
-
-    <!-- 缓存配置 -->
-    <!--<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
-        <!--<property name="configLocation" value="classpath:${ehcache.configFile}" />-->
-    <!--</bean>-->
+    <bean id="shiroCacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"></bean>
 
     <!-- 开启Shiro的注解(如@RequiresRoles，@RequiresPermissions)，需借助SpringAOP扫描使用Shiro注解的类,并在必要时进行安全逻辑验证 -->
     <!-- @RequiresPermissions("item:query") -->

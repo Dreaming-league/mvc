@@ -11,7 +11,8 @@ import org.apache.commons.lang3.time.DateFormatUtils;
 /**
  * 时间计算工具类
  * @author  tikie
- * @version 2016-10-22
+ * @since   2016-10-22
+ * @version 1.0.0
  */
 public class TimeUtils {
 	

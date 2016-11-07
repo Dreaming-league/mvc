@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * 封装各种生成唯一性ID算法的工具类.
- * @author ThinkGem
- * @version 2013-01-15
+ * @author  tikie
+ * @since 2016-10-26
  */
 @Service
 @Lazy(false)

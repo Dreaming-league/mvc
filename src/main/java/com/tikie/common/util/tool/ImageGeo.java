@@ -6,6 +6,11 @@ import com.drew.imaging.jpeg.*;
 import com.drew.lang.*;
 import java.io.*;
 
+/**
+ * 图片工具类
+ * @author  tikie
+ * @since  2016-10-26
+ */
 public class ImageGeo {
 	public double lat = 0.0;
 	public double lon = 0.0;

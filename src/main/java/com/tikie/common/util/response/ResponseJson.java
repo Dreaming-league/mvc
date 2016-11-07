@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * @target      前端异步请求返回数据
+ *               前端异步请求返回数据
  *
- * @author      zcs
- * @date        2016-10-22
+ * @author       zcs
+ * @since        2016-10-22
  */
 public class ResponseJson {
     private static final String STATUS = "status";

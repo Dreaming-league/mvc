@@ -9,9 +9,9 @@ import java.io.InputStreamReader;
 
 /**
  * MAC地址工具
- * 
- * @author ThinkGem
- * @version 2013-12-21
+ *
+ * @author  tikie
+ * @since   2016-10-26
  */
 public class MacUtils {
 

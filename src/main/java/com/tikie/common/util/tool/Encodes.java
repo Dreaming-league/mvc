@@ -18,8 +18,8 @@ import org.apache.commons.lang3.StringEscapeUtils;
  * 2.自制的base62 编码
  * 3.Commons-Lang的xml/html escape
  * 4.JDK提供的URLEncoder
- * @author calvin
- * @version 2013-01-15
+ * @author tikie
+ * @since 2016-10-26
  */
 public class Encodes {
 
