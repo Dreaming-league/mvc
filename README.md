@@ -10,6 +10,8 @@
     QQ群：282781158
     [gitbook](https://www.gitbook.com/book/290315636/springmvc/details)
     
+    主要负责人：tikie
+    开发人员：tikie,and so on 
     
 ##三. 技术方向
     javaWeb相关技术
