@@ -12,15 +12,20 @@ import java.util.List;
  * @version     1.0.0
  */
 public interface UserService {
-    /**
-     * @target  用ID查询用户信息
-     * @param   id
-     *
-     * @return  User
-     */
+    Boolean add(User user);
+
     User getById(Integer id);
+
+    Boolean deleteByIds(Integer[] ids);
+
+    Boolean update(User user);
 
     User getByAccount(String account);
 
+    /**
+     * 查找所有isDelete为0的用户，分页需要在ResponseJson中配置，默认0,10
+     *
+     * @return  List<User>
+     */
     List<User> getAll();
 }

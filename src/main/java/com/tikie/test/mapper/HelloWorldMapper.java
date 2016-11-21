@@ -23,13 +23,7 @@ public interface HelloWorldMapper extends BaseMapper{
      */
     HelloWorld getById(@Param("id") Integer id);
 
-    /**
-     * @target  新增一条记录
-     *
-     * @param   helloWorld
-     * @return  新插入行的主键
-     */
-    Integer insert(@Param("helloWorld")HelloWorld helloWorld);
+    Boolean insert(@Param("helloWorld")HelloWorld helloWorld);
 
     /**
      * @target  按照ID删除友好信息
@@ -39,13 +33,7 @@ public interface HelloWorldMapper extends BaseMapper{
      */
     Integer deleteById(@Param("id") Integer id);
 
-    /**
-     * @target  更新
-     *
-     * @param   helloWorld
-     * @return  更新的行数
-     */
-    Integer update(@Param("helloWorld") HelloWorld helloWorld);
+    Boolean update(@Param("helloWorld") HelloWorld helloWorld);
 
     /**
      * @target  按照message模糊查询

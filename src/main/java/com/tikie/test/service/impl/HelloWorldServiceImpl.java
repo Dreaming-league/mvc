@@ -31,13 +31,7 @@ public class HelloWorldServiceImpl implements HelloWorldService{
         return helloWorldMapper.getById(id);
     }
 
-    /**
-     * @target  新增一条记录
-     *
-     * @param   helloWorld
-     * @return  新插入行的主键
-     */
-    public Integer insert(HelloWorld helloWorld){
+    public Boolean insert(HelloWorld helloWorld){
         return helloWorldMapper.insert(helloWorld);
     }
 
@@ -51,13 +45,7 @@ public class HelloWorldServiceImpl implements HelloWorldService{
         return helloWorldMapper.deleteById(id);
     }
 
-    /**
-     * @target  更新
-     *
-     * @param   helloWorld
-     * @return  更新的行数
-     */
-    public Integer update(HelloWorld helloWorld){
+    public Boolean update(HelloWorld helloWorld){
         return helloWorldMapper.update(helloWorld);
     }
 

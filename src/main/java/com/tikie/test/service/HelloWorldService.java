@@ -20,13 +20,7 @@ public interface HelloWorldService {
      */
     HelloWorld getById(Integer id);
 
-    /**
-     * @target  新增一条记录
-     *
-     * @param   helloWorld
-     * @return  新插入行的主键
-     */
-    Integer insert(HelloWorld helloWorld);
+    Boolean insert(HelloWorld helloWorld);
 
     /**
      * @target  按照ID删除友好信息
@@ -36,13 +30,7 @@ public interface HelloWorldService {
      */
     Integer deleteById(Integer id);
 
-    /**
-     * @target  更新
-     *
-     * @param   helloWorld
-     * @return  更新的行数
-     */
-    Integer update(HelloWorld helloWorld);
+    Boolean update(HelloWorld helloWorld);
 
     /**
      * @target  按照message模糊查询

@@ -83,6 +83,63 @@
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
+    <insert id="add" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        insert into `shiro_user`(
+          `account`,  `pwd` ,  `nickName` ,  `sex` ,  `photo` ,  `sign`,  `skin`,  `score` ,  `honor`,  `realName` ,  `NID` ,  `phone` ,  `email` ,  `company`,  `title` ,  `position` ,  `QQ`,  `weChat` ,  `QRCode`,  `microBlog`,  `renRen`,  `twitter`,  `facebook`,  `postcode`,  `nowAddress`,  `homeland`,  `isActive` ,  `isSys` ,  `isDelete`,  `createdBy`,  `updatedBy` ,  `createdTime`,  `updatedTime`,  `note`,  `e`
+        )values(
+          #{account},#{pwd},#{nickName},#{sex},#{photo},#{sign},#{skin},#{score},#{honor},#{realName},#{NID},#{phone},#{email},#{company},#{title},#{position},#{QQ},#{weChat},#{QRCode},#{microBlog},#{renRen},#{twitter},#{facebook},#{postcode},#{nowAddress},#{homeland},#{isActive},#{isSys},#{isDelete},#{createdBy},#{updatedBy},#{createdTime},#{updatedTime},#{note},#{e}
+        )
+    </insert>
+
+    <update id="update">
+        update `shiro_user` SET
+         `account`  = #{account},
+         `pwd`  = #{pwd},
+         `nickName`  = #{nickName},
+         `sex`  = #{sex},
+         `photo`  = #{photo},
+         `sign`  = #{sign},
+         `skin`  = #{skin},
+         `score`  = #{score},
+         `honor`  = #{honor},
+         `realName`  = #{realName},
+         `NID`  = #{NID},
+         `phone`  = #{phone},
+         `email`  = #{email},
+         `company`  = #{company},
+         `title`  = #{title},
+         `position`  = #{position},
+         `QQ`  = #{QQ},
+         `weChat`  = #{weChat},
+         `QRCode`  = #{QRCode},
+         `microBlog`  = #{microBlog},
+         `renRen`  = #{renRen},
+         `twitter`  = #{twitter},
+         `facebook`  = #{facebook},
+         `postcode`  = #{postcode},
+         `nowAddress`  = #{nowAddress},
+         `homeland`  = #{homeland},
+         `isActive`  = #{isActive},
+         `isSys`  = #{isSys},
+         `isDelete`  = #{isDelete},
+         `createdBy`  = #{createdBy},
+         `updatedBy`  = #{updatedBy},
+         `createdTime`  = #{createdTime},
+         `updatedTime`  = #{updatedTime},
+         `note`  = #{note},
+         `e`  = #{e}
+         where id =#{id}
+    </update>
+
+    <delete id="deleteByIds" parameterType = "java.util.List">
+        <![CDATA[
+          delete from `shiro_user` where id in
+        ]]>
+        <foreach collection="ids" item = "item" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
     <!-- 获取用户信息及用户权限关系信息 -->
     <select id="getByAccount" resultMap="User">
         select
@@ -93,6 +150,7 @@
     </select>
 
     <select id="getAll" resultType="User">
-        select * from `shiro_user` A where A.isDelete ='0'
+        select * from `shiro_user` A where A.isDelete ='0' limit #{start},#{limit}
     </select>
 </mapper>
+

@@ -44,6 +44,8 @@
     1.8.1 service层增加缓存处理（测试类需要启动服务才能使用缓存）
     1.8.2 UserService增加其他方法
     
+    1.9.1 使用mybatis generator生成service基本代码
+    
 ##五. 下次更新 
     后台管理模块之权限管理  
         
@@ -76,6 +78,8 @@
            (push当前分支到远程同名分支，如果远程同名分支不存在则自动创建同名分支)
            git config push.default "current"
            git config pull.default "current"
+           
+           #在对应的分支上执行：如develop分支
            git branch --set-upstream-to=origin/develop
                       
     基本规范:
@@ -95,7 +99,8 @@
     接口开发规范:
     
         1. 开发完每个接口后必需写对应的测试类,确保无bug
-        2. 接口采取见名知义\言简意赅的原则,如:getById(或get),insert,delete,update,getAll,getSimilarByMessage等
+        2. 接口采取见名知义\言简意赅的原则,如:getById(或get),add,delete,update,getAll,getSimilarByMessage等
+        3. add和update返回值为true／false,delete返回删除成功了几条数据
         
 ##七.加入我们
     直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。

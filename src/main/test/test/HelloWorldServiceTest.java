@@ -25,35 +25,35 @@ public class HelloWorldServiceTest {
     @Autowired
     HelloWorldService helloWorldService;
 
-    @Test
-    /**
-     * @target  测试mybatis的获取数据能力
-     */
-    public void testGetById(){
+//    @Test
+//    /**
+//     * @target  测试mybatis的获取数据能力
+//     */
+//    public void testGetById(){
 //        HelloWorld hello = helloWorldService.getById(1);
 //        System.out.println(hello.getMessage());
-    }
+//    }
 
-    @Test
-    public void testInsert(){
+//    @Test
+//    public void testInsert(){
 //        HelloWorld hello = new HelloWorld();
 //        hello.setMessage("你好吗?");
 //        System.out.println(helloWorldService.insert(hello));
 //        System.out.println(hello.getId());
-    }
+//    }
 
-    @Test
-    public void testDelete(){
-        System.out.print(helloWorldService.deleteById(2));
-    }
+//    @Test
+//    public void testDelete(){
+//        System.out.print(helloWorldService.deleteById(2));
+//    }
 
-    @Test
-    public void testUpdate(){
+//    @Test
+//    public void testUpdate(){
 //        HelloWorld hello = new HelloWorld();
 //        hello.setId(3);
-//        hello.setMessage("更改后的信息");
+//        hello.setMessage("更改信息");
 //        System.out.print(helloWorldService.update(hello));
-    }
+//    }
 
     @Test
     public void testGetSimilarByMessage(){

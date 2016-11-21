@@ -17,9 +17,15 @@ import java.util.List;
 @MyBatisRepository
 public interface UserMapper extends BaseMapper {
 
+    Boolean add(User user);
+
     User getById(@Param("id") Integer id);
+
+    Boolean deleteByIds(@Param("ids") Integer[] ids);
+
+    Boolean update(User user);
 
     User getByAccount(@Param("account") String account);
 
-    List<User> getAll();
+    List<User> getAll(@Param("start") Integer start,@Param("limit") Integer limit);
 }

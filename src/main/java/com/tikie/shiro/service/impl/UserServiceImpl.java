@@ -1,6 +1,7 @@
 package com.tikie.shiro.service.impl;
 
 import com.tikie.common.util.CacheUtils;
+import com.tikie.common.util.response.ResponseJson;
 import com.tikie.shiro.entity.User;
 import com.tikie.shiro.mapper.UserMapper;
 import com.tikie.shiro.service.UserService;
@@ -26,12 +27,10 @@ public class UserServiceImpl implements UserService{
     public static final String USER_CACHE_ID_ = "userId_";
     public static final String USER_CACHE_USER_ = "user_";
 
-    /**
-     *
-     * @param   id
-     *
-     * @return  User
-     */
+    public Boolean add(User user){
+        return userMapper.add(user);
+    }
+
     public User getById(Integer id) {
         User user = (User) CacheUtils.get(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
@@ -44,6 +43,13 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
+    public Boolean deleteByIds(Integer[] ids){
+        return userMapper.deleteByIds(ids);
+    }
+
+    public Boolean update(User user){
+        return userMapper.update(user);
+    }
     /**
      *
      * @param   account
@@ -66,15 +72,15 @@ public class UserServiceImpl implements UserService{
      * @return  List<User>
      */
     public List<User> getAll(){
-//        List<User> list = (List<User>) CacheUtils.get(USER_CACHE,USER_CACHE_USER_ + "list");
-//        if(list ==null ||list.size() <=0){
-//            list = userMapper.getAll();
-//            if(list ==null ||list.size() <=0){
-//                return null;
-//            }
-//            CacheUtils.put(USER_CACHE,USER_CACHE_USER_ + "list");
-//        }
-//        return list;
-        return userMapper.getAll();
+        List<User> list = (List<User>) CacheUtils.get(USER_CACHE,USER_CACHE_USER_ + "list");
+        if(list ==null ||list.size() <=0){
+            list = userMapper.getAll(ResponseJson.getInstance().getPage()*ResponseJson.getInstance().getSize(),ResponseJson.getInstance().getSize());
+            if(list ==null ||list.size() <=0){
+                return null;
+            }
+            CacheUtils.put(USER_CACHE,USER_CACHE_USER_ + "list");
+        }
+        return list;
+//        return userMapper.getAll(ResponseJson.getInstance().getPage()*ResponseJson.getInstance().getSize(),ResponseJson.getInstance().getSize());
     }
 }
