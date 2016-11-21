@@ -33,6 +33,7 @@ public class User implements Serializable{
     private String honor;           //荣誉称号
 
     private String realName;        //真实姓名
+    private String sex;             //性别
     private String NID;             //身份证号
     private String phone;           //手机号
     private String email;
@@ -57,6 +58,7 @@ public class User implements Serializable{
     private List<UserRoleRelation> roleRelationList;    //拥有的角色关系
 
     private String isActive;        //是否有效/启用
+    private String isSys;           //是否系统用户
     private String isDelete;        //是否逻辑删除
 
     private String createdBy;

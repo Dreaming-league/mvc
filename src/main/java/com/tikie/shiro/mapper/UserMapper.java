@@ -5,6 +5,8 @@ import com.tikie.test.mapper.BaseMapper;
 import com.tikie.test.mapper.MyBatisRepository;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  * @targget     UserMapper
  *
@@ -18,4 +20,6 @@ public interface UserMapper extends BaseMapper {
     User getById(@Param("id") Integer id);
 
     User getByAccount(@Param("account") String account);
+
+    List<User> getAll();
 }

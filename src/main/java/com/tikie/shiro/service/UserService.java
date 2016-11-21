@@ -2,6 +2,8 @@ package com.tikie.shiro.service;
 
 import com.tikie.shiro.entity.User;
 
+import java.util.List;
+
 /**
  * @targget     UserService
  *
@@ -19,4 +21,6 @@ public interface UserService {
     User getById(Integer id);
 
     User getByAccount(String account);
+
+    List<User> getAll();
 }

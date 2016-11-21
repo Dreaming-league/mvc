@@ -24,15 +24,21 @@
         <result property="nickName" column="nickName"/>
         <result property="photo" column="photo"/>
         <result property="sign" column="sign"/>
+
         <result property="skin" column="skin"/>
         <result property="score" column="score"/>
         <result property="honor" column="honor"/>
+
+        <result property="realName" column="realName"/>
+        <result property="sex" column="sex"/>
         <result property="NID" column="NID"/>
         <result property="phone" column="phone"/>
         <result property="email" column="email"/>
+
         <result property="company" column="company"/>
         <result property="title" column="title"/>
         <result property="position" column="position"/>
+
         <result property="QQ" column="QQ"/>
         <result property="weChat" column="weChat"/>
         <result property="QRCode" column="QRCode"/>
@@ -40,11 +46,13 @@
         <result property="renRen" column="renRen"/>
         <result property="twitter" column="twitter"/>
         <result property="facebook" column="facebook"/>
+
         <result property="postcode" column="postcode"/>
         <result property="nowAddress" column="nowAddress"/>
         <result property="homeland" column="homeland"/>
 
         <result property="isActive" column="isActive"/>
+        <result property="isSys" column="isSys"/>
         <result property="isDelete" column="isDelete"/>
         <result property="createdBy" column="createdBy"/>
         <result property="updatedBy" column="updatedBy"/>
@@ -84,5 +92,7 @@
         where A.isDelete='0' and A.isActive='1' and A.account = #{account}
     </select>
 
-
+    <select id="getAll" resultType="User">
+        select * from `shiro_user` A where A.isDelete ='0'
+    </select>
 </mapper>

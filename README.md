@@ -31,6 +31,7 @@
     
     1.3.1 数据库时间字段默认值统一为当前时间
           更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
+    1.3.2 数据库isActive更改默认值为1，isDelete默认值为0，isSys默认值为1     
           
     1.4.1 更新常用工具类，添加允许跨域访问过滤器
     
@@ -40,7 +41,8 @@
     
     1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
     
-    1.8.1 service层增加缓存处理
+    1.8.1 service层增加缓存处理（测试类需要启动服务才能使用缓存）
+    1.8.2 UserService增加其他方法
     
 ##五. 下次更新 
     后台管理模块之权限管理  
@@ -68,7 +70,13 @@
                    
         8. 最终项目负责人把稳定版同步到主分支master(有权限限制哦)：git push origin master
                    
-        ps:关于git的相关指令等操作可自我百度学习
+        ps:关于git的相关指令等操作可自我百度学习;
+            
+           设置默认push/pull行为
+           (push当前分支到远程同名分支，如果远程同名分支不存在则自动创建同名分支)
+           git config push.default "current"
+           git config pull.default "current"
+           git branch --set-upstream-to=origin/develop
                       
     基本规范:
     

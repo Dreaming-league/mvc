@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * @targget     测试UserService类
  *
@@ -36,5 +38,16 @@ public class UserServiceTest {
         System.out.println(user.getId());
         System.out.println(user.getAccount());
         System.out.println(user.getRoleRelationList().toString());
+    }
+
+    @Test
+    public void testGetAll(){
+        List<User> list = userService.getAll();
+        if(list!=null && list.size()>0){
+            for(User user:list){
+                System.out.println("输出内容:"+ user.getAccount());
+                System.out.println("输出内容:"+ user.getNickName());
+            }
+        }
     }
 }
