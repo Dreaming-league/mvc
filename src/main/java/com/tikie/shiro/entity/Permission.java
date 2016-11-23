@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission implements Serializable {
-    private Integer id;
+    private Long id;
 
     private String name;              //权限名称
     private String permission;        //权限标识

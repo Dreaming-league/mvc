@@ -75,7 +75,7 @@
     </resultMap>
 
     <!-- 获取用户信息及用户权限关系信息 -->
-    <select id="getById" parameterType="int" resultMap="User">
+    <select id="getById" resultMap="User">
         select
               <include refid="userColumns"/>
         from `shiro_user` A

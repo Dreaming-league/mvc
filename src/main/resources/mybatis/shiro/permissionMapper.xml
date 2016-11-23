@@ -51,7 +51,7 @@
     </select>
 
     <!-- 获取用户信息及用户权限关系信息 -->
-    <select id="getById" parameterType="int" resultMap="Permission">
+    <select id="getById" resultMap="Permission">
         select
         <include refid="permissionColumns"/>
         from `shiro_permission` A

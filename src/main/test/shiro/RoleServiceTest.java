@@ -22,14 +22,14 @@ public class RoleServiceTest {
     @Autowired
     private RoleService roleService;
 
-    @Test
-    public void testGetById(){
-        Role role = roleService.getById(0);
-
-        System.out.println(role.getId());
-        System.out.println(role.getName());
-        System.out.println(role.getUserRelationList().toString());
-        System.out.println(role.getPermissionRelationList().toString());
-    }
+//    @Test
+//    public void testGetById(){
+//        Role role = roleService.getById(0L);
+//
+//        System.out.println(role.getId());
+//        System.out.println(role.getName());
+//        System.out.println(role.getUserRelationList().toString());
+//        System.out.println(role.getPermissionRelationList().toString());
+//    }
 
 }

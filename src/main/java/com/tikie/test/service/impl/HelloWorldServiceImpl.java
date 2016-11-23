@@ -27,7 +27,7 @@ public class HelloWorldServiceImpl implements HelloWorldService{
      *
      * @return  HelloWorld
      */
-    public HelloWorld getById(Integer id){
+    public HelloWorld getById(Long id){
         return helloWorldMapper.getById(id);
     }
 
@@ -41,7 +41,7 @@ public class HelloWorldServiceImpl implements HelloWorldService{
      * @param   id
      * @return  删除的行数
      */
-    public Integer deleteById(Integer id){
+    public Integer deleteById(Long id){
         return helloWorldMapper.deleteById(id);
     }
 

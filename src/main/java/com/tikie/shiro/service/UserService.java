@@ -14,9 +14,9 @@ import java.util.List;
 public interface UserService {
     Boolean add(User user);
 
-    User getById(Integer id);
+    User getById(Long id);
 
-    Boolean deleteByIds(Integer[] ids);
+    Boolean deleteByIds(Long[] ids);
 
     Boolean update(User user);
 

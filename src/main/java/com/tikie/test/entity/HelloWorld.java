@@ -13,6 +13,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HelloWorld {
-    private Integer id;
+    private Long id;
     private String message;
 }

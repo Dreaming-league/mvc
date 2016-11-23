@@ -1,15 +1,12 @@
 package com.tikie.shiro.service;
 
-import com.tikie.common.config.Global;
 import com.tikie.shiro.entity.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
-import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,10 +16,10 @@ import java.io.Serializable;
 import java.util.*;
 
 /**
- * @targget     权限管理
+ *              权限管理
  *
  * @author      tikie
- * @date        2016-10-09
+ *              2016-10-09
  * @version     1.0.0
  */
 @Transactional
@@ -36,9 +33,9 @@ public class MyShiro extends AuthorizingRealm {
     @Autowired
     private PermissionService permissionService;
     /**
-     * @target  权限认证
+     *          权限认证
      *
-     * @param   principalCollection
+     *          principalCollection
      * @return  AuthorizationInfo
      */
     @Override
@@ -85,8 +82,8 @@ public class MyShiro extends AuthorizingRealm {
     }
 
     /**
-     * @target  查处权限及子权限的权限标识
-     * @param   permission
+     *          查处权限及子权限的权限标识
+     *          permission
      * @return  Collection<String>
      */
     private Collection<String> getPerssions(Permission permission){
@@ -107,9 +104,9 @@ public class MyShiro extends AuthorizingRealm {
     }
 
     /**
-     * @target  登录认证
+     *          登录认证
      *
-     * @param   authenticationToken
+     *          authenticationToken
      * @return  AuthorizationInfo
      */
     @Override
@@ -141,7 +138,7 @@ public class MyShiro extends AuthorizingRealm {
 
         private static final long serialVersionUID = 1L;
 
-        private Integer id;             // 编号
+        private Long id;             // 编号
         private String account;         // 登录名
         private String nickName;        //昵称:页面显示
         private String photo;           //头像

@@ -18,7 +18,7 @@ public class PermissionServiceImpl implements PermissionService{
 
     @Autowired
     PermissionMapper permissionMapper;
-    public Permission getById(Integer id){
+    public Permission getById(Long id){
         return permissionMapper.getById(id);
     }
 }

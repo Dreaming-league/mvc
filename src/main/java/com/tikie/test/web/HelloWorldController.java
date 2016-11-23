@@ -47,7 +47,7 @@ public class HelloWorldController{
         4、选择下一个页面
         */
         ModelAndView mv = new ModelAndView();
-        HelloWorld hello = helloWorldService.getById(0);
+        HelloWorld hello = helloWorldService.getById(0L);
 
         if(hello!=null){
             //添加模型数据 可以是任意的POJO对象
@@ -64,7 +64,7 @@ public class HelloWorldController{
     @RequestMapping(value = "/beet",method = RequestMethod.GET)
     public ModelAndView beetMapper(){
         ModelAndView mv = new ModelAndView("hello.html");
-        HelloWorld hello = helloWorldService.getById(0);
+        HelloWorld hello = helloWorldService.getById(0L);
 
         if(hello!=null){
             //添加模型数据 可以是任意的POJO对象

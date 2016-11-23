@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role implements Serializable {
-    private Integer id;
+    private Long id;
 
     private String name;            //角色名称
     private String permission;      //权限标识

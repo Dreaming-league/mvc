@@ -14,5 +14,5 @@ import org.springframework.data.repository.query.Param;
 @MyBatisRepository
 public interface PermissionMapper {
 
-    Permission getById(@Param("id") Integer id);
+    Permission getById(@Param("id") Long id);
 }

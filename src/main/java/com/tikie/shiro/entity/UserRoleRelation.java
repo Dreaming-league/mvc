@@ -8,18 +8,18 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * @targget     用户角色关系对照实体类
+ *              用户角色关系对照实体类
  *
  * @author      tikie
- * @date        2016-10-02
+ *              2016-10-02
  * @version     1.0.0
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRoleRelation implements Serializable {
-    private Integer userId;
-    private Integer roleId;
+    private Long userId;
+    private Long roleId;
 
     private String isActive;        //是否有效/启用
     private String isDelete;        //是否逻辑删除

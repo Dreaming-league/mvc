@@ -18,7 +18,7 @@ public interface HelloWorldService {
      * @param   id
      * @return  HelloWorld
      */
-    HelloWorld getById(Integer id);
+    HelloWorld getById(Long id);
 
     Boolean insert(HelloWorld helloWorld);
 
@@ -28,7 +28,7 @@ public interface HelloWorldService {
      * @param   id
      * @return  删除的行数
      */
-    Integer deleteById(Integer id);
+    Integer deleteById(Long id);
 
     Boolean update(HelloWorld helloWorld);
 

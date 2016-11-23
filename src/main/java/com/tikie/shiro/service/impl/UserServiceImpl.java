@@ -31,7 +31,7 @@ public class UserServiceImpl implements UserService{
         return userMapper.add(user);
     }
 
-    public User getById(Integer id) {
+    public User getById(Long id) {
         User user = (User) CacheUtils.get(USER_CACHE, USER_CACHE_ID_ + id);
         if (user ==  null){
             user = userMapper.getById(id);
@@ -43,7 +43,7 @@ public class UserServiceImpl implements UserService{
         return user;
     }
 
-    public Boolean deleteByIds(Integer[] ids){
+    public Boolean deleteByIds(Long[] ids){
         return userMapper.deleteByIds(ids);
     }
 

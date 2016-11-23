@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- * @targget     RoleMapper
+ *              RoleMapper
  *
  * @author      tikie
- * @date        2016-10-09
+ *              2016-10-09
  * @version     1.0.0
+ *
  */
 @Service
 public class RoleServiceImpl implements RoleService{
@@ -19,7 +20,7 @@ public class RoleServiceImpl implements RoleService{
     @Autowired
     RoleMapper roleMapper;
 
-    public Role getById(Integer id){
+    public Role getById(Long id){
         return roleMapper.getById(id);
     }
 }

@@ -53,19 +53,19 @@ public class UserServiceTest {
 //        System.out.println("输出内容:"+ userService.deleteByIds(ids));
 //    }
 
-    @Test
-    public void testUpdate(){
-        User user = new User();
-        user.setAccount("123");
-        user.setId(10);
-        user.setIsDelete("0");
-        user.setUpdatedTime(new Date());
-        Boolean t = userService.update(user);
-
-        System.out.println("输出内容:"+ t);
-        System.out.println("输出内容:"+ user);
-
-    }
+//    @Test
+//    public void testUpdate(){
+//        User user = new User();
+//        user.setAccount("123");
+//        user.setId(10L);
+//        user.setIsDelete("0");
+//        user.setUpdatedTime(new Date());
+//        Boolean t = userService.update(user);
+//
+//        System.out.println("输出内容:"+ t);
+//        System.out.println("输出内容:"+ user);
+//
+//    }
 
 //    @Test
 //    public void testGetByAccount(){

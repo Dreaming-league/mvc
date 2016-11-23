@@ -19,9 +19,9 @@ public interface UserMapper extends BaseMapper {
 
     Boolean add(User user);
 
-    User getById(@Param("id") Integer id);
+    User getById(@Param("id") Long id);
 
-    Boolean deleteByIds(@Param("ids") Integer[] ids);
+    Boolean deleteByIds(@Param("ids") Long[] ids);
 
     Boolean update(User user);
 

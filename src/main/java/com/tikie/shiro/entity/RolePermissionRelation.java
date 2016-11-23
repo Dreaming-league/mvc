@@ -19,8 +19,8 @@ import java.util.Date;
 @AllArgsConstructor
 public class RolePermissionRelation implements Serializable {
 
-    private Integer roleId;
-    private Integer permissionId;
+    private Long roleId;
+    private Long permissionId;
 
     private String isActive;        //是否有效/启用
     private String isDelete;        //是否逻辑删除

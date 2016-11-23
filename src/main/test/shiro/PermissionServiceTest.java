@@ -22,12 +22,12 @@ public class PermissionServiceTest {
     @Autowired
     private PermissionMapper permissionMapper;
 
-    @Test
-    public void testGetById(){
-        Permission permission = permissionMapper.getById(0);
-
-        System.out.println(permission.getName());
-        System.out.println(permission.getRoleRelationList().toString());
-        System.out.println(permission.getChildren().toString());
-    }
+//    @Test
+//    public void testGetById(){
+//        Permission permission = permissionMapper.getById(0L);
+//
+//        System.out.println(permission.getName());
+//        System.out.println(permission.getRoleRelationList().toString());
+//        System.out.println(permission.getChildren().toString());
+//    }
 }

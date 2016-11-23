@@ -21,7 +21,7 @@ public interface HelloWorldMapper extends BaseMapper{
      *
      * @return  HelloWorld
      */
-    HelloWorld getById(@Param("id") Integer id);
+    HelloWorld getById(@Param("id") Long id);
 
     Boolean insert(@Param("helloWorld")HelloWorld helloWorld);
 
@@ -31,7 +31,7 @@ public interface HelloWorldMapper extends BaseMapper{
      * @param   id
      * @return  删除的行数
      */
-    Integer deleteById(@Param("id") Integer id);
+    Integer deleteById(@Param("id") Long id);
 
     Boolean update(@Param("helloWorld") HelloWorld helloWorld);
 

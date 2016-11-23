@@ -9,17 +9,17 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * @targget     用户实体类
+ *              用户实体类
  *
  * @author      tikie
- * @date        2016-10-02
+ *              2016-10-02
  * @version     1.0.0
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable{
-    private Integer id;
+    private Long id;
     private String account;         //账号
     private String pwd;             //密码
 
