@@ -11,7 +11,7 @@
         <!-- 自动识别数据库关键字，默认false，如果设置为true，根据SqlReservedWords中定义的关键字列表；
         一般保留默认值，遇到数据库关键字（Java关键字），使用columnOverride覆盖
         -->
-        <property name="autoDelimitKeywords" value="false"/>
+        <property name="autoDelimitKeywords" value="true"/>
         <!-- 生成的Java文件的编码 -->
         <property name="javaFileEncoding" value="UTF-8"/>
         <!-- 格式化java代码 -->
@@ -23,6 +23,7 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
+        <!-- 不要注释 -->
         <commentGenerator>
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
@@ -31,6 +32,7 @@
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
+        <!-- entity -->
         <javaModelGenerator targetPackage="${generator.entity}" targetProject="${generator.targetProject}">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
@@ -44,11 +46,13 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
-        <table schema="dispatch" tableName="test_role" domainObjectName="TestRole" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
-        </table>
-        <table schema="dispatch" tableName="test" domainObjectName="Test" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <property name="useActualColumnNames" value="true"/>
+        <!--<table schema="dispatch" tableName="test_role" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+            <!--<generatedKey column="id" sqlStatement="JDBC"/>-->
+        <!--</table>-->
+        <table schema="dispatch" tableName="test" domainObjectName="Test">
+            <property name="useActualColumnNames" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
         </table>
     </context>
 

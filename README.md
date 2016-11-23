@@ -45,6 +45,15 @@
     1.8.2 UserService增加其他方法
     
     1.9.1 使用mybatis generator生成service基本代码
+    1.9.2 生成的代码--插入时改为自增主键，增加基于example的动态where条件处理
+    1.9.3 生成代码及使用步骤
+          1. 更改resources/config/test/jdbc.properties中的配置（主要更改模块名）
+          2. 更改resources/generatorConfig.xml关于表的配置（基于哪些表生成对应的代码）
+          3. 运行maven命令：mvn mybatis-generator:generate
+          4. 对于每个生成的Mapper接口增加@MyBatisRepository注解
+          5. 书写service层接口及实现
+          6. 书写测试类
+          ps:可参考generator模块学习基本使用方法
     
 ##五. 下次更新 
     后台管理模块之权限管理  
