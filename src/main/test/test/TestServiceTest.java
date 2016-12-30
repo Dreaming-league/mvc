@@ -1,5 +1,6 @@
 package test;
 
+//import com.tikie.generator.entity.TestExample;
 import com.tikie.generator.entity.TestExample;
 import com.tikie.generator.service.TestService;
 import org.junit.Test;

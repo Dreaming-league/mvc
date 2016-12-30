@@ -9,11 +9,10 @@ import org.springframework.stereotype.Service;
 /**
  * @author zcs
  * @desc 目的
- * @date 2016/11/23
+ * @date 2016/12/30
  */
 @Service
 public class TestServiceImpl implements TestService{
-
     @Autowired
     TestMapper testMapper;
     public int deleteByExample(TestExample example){

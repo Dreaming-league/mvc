@@ -8,7 +8,8 @@
     组织发起者：Tikie
     QQ:290313636
     QQ群：282781158
-    [gitbook](https://www.gitbook.com/book/290315636/springmvc/details)
+    [资料](https://www.gitbook.com/book/290315636/springmvc/details)
+    [百度](https://www.baidu.com/)
     
     主要负责人：tikie
     开发人员：tikie,and so on 
