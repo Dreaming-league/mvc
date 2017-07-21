@@ -39,6 +39,7 @@
     1.5.1 项目增加develop和proposed分支，在develop分支上开发，确定没问题了提交到proposed分支，项目负责人确定没问题后更新proposed分支到master主分支
     
     1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
+    1.6.2 暂时去掉子模块 前端页面不太成熟，成型后再做成子模块
     
     1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
     
