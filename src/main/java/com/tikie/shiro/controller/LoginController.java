@@ -52,14 +52,14 @@ public class LoginController {
         //输入非空校验
         if(StringUtils.isEmpty(login.getAccount()) || StringUtils.isEmpty(login.getPwd())){
             session.setAttribute("message","用户名或密码为空");
-            mv.setViewName("redirect:/f/login");
+            mv.setViewName("login.jsp");
             return mv;
         }
 
         User user = userService.getByAccount(login.getAccount());
         if(user ==null || !user.getPwd().equals(new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())))){
             session.setAttribute("message","用户不存在或密码错误");
-            mv.setViewName("redirect:/f/login");
+            mv.setViewName("login.jsp");
             return mv;
         }else{
             //获取密码令牌并验证

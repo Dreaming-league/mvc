@@ -18,7 +18,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User{
+public class User implements Serializable {
     private Long id;
     private String account;         //账号
     private String pwd;             //密码
