@@ -1,8 +1,8 @@
-#一. Springmvc起航
+# 一. Springmvc起航
     以Springmvc架构搭建最简单的web项目，做为一个引子
     
     
-##二. 关于我们
+## 二. 关于我们
     我们是一群有理想、有抱负的愤青，一直不满足于当下的技术积累，决定团结一致，追求更高深的技术！
     
     组织发起者：Tikie
@@ -14,14 +14,14 @@
     主要负责人：tikie
     开发人员：tikie,and so on 
     
-##三. 技术方向
+## 三. 技术方向
     javaWeb相关技术
     
     python相关技术
     
     ElasticSearch
     
-##四. 更新
+## 四. 更新
     1.0.1 更改为注解模式,方法已同步到gitbook
     
     1.1.1 增加mybatis-spring技术,实现数据持久化(c3p0为数据源连接池实现,连接mysql5.6+数据库)
@@ -56,12 +56,14 @@
           5. 书写service层接口及实现
           6. 书写测试类
           ps:可参考generator模块学习基本使用方法
+          
+    2.0.0 更新pom依赖，去掉过时依赖
     
-##五. 下次更新 
+## 五. 下次更新 
     后台管理模块之权限管理  
         
     
-##六. 开发规范
+## 六. 开发规范
 
     说明:
     
@@ -113,5 +115,5 @@
         2. 接口采取见名知义\言简意赅的原则,如:getById(或get),add,delete,update,getAll,getSimilarByMessage等
         3. add和update返回值为true／false,delete返回删除成功了几条数据
         
-##七.加入我们
+## 七.加入我们
     直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。

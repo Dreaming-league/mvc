@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ckfinder.connector.ServletContextFactory;
 import com.tikie.common.util.tool.PropertiesLoader;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -129,26 +128,6 @@ public class Global {
 		return null;
 	}
 
-	/**
-	 * 获取上传文件的根目录
-	 * @return
-	 */
-	public static String getUserfilesBaseDir() {
-		String dir = getConfig("userfiles.basedir");
-		if (StringUtils.isBlank(dir)){
-			try {
-				dir = ServletContextFactory.getServletContext().getRealPath("/");
-			} catch (Exception e) {
-				return "";
-			}
-		}
-		if(!dir.endsWith("/")) {
-			dir += "/";
-		}
-//		System.out.println("userfiles.basedir: " + dir);
-		return dir;
-	}
-	
     /**
      * 获取工程路径
      * @return
