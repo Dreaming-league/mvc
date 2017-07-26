@@ -10,6 +10,9 @@
 
   <!-- 项目属性 -->
   <properties>
+
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
     <!-- test setting -->
     <junit.version>4.12</junit.version>
     <springframework.version>4.3.3.RELEASE</springframework.version>
