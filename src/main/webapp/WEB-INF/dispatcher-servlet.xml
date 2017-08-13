@@ -52,6 +52,9 @@
     <mvc:view-controller path="/home" view-name="welcome" />
     <mvc:view-controller path="/uncaughtException" />
 
+    <!-- 允许访问静态文件 -->
+    <mvc:default-servlet-handler/>
+
     <!-- 全局异常配置 start -->
     <bean id="exceptionResolver"
           class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">

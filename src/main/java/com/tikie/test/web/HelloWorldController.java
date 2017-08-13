@@ -10,6 +10,7 @@ import org.beetl.core.resource.WebAppResourceLoader;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,6 +59,19 @@ public class HelloWorldController{
 
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
         mv.setViewName("hello.jsp");
+        return mv;
+    }
+
+    /**
+     * @target      跳转到各个测试模块的首页
+     *
+     * @return      ModelAndView    跳转到测试模块页面
+     *              即WEB-INF/views/jsp/f/module/index.jsp页面
+     */
+    @RequestMapping(value = "/{module}/index",method = RequestMethod.GET)
+    public ModelAndView testRequiresJs(@PathVariable String module){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("f/test/"+module+"/index.jsp");
         return mv;
     }
 

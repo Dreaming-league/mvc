@@ -9,7 +9,7 @@
 
     <!-- 默认装饰页面, 在需要装饰的页面增加<meta name="decorator" content="default"/> -->
     <decorator name="default" page="default.jsp">
-        <pattern>/f/*</pattern>
+        <!--<pattern>/f/*</pattern>-->
     </decorator>
     <!-- 下面可以写多个 -->
 

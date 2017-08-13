@@ -12,7 +12,7 @@
     </shiro:guest>
 
     <shiro:user>
-
+        <a href="/test/requirejs/index">学习RequireJs</a>
     </shiro:user>
 
     <shiro:hasRole name="defaultRole">
