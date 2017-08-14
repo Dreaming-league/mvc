@@ -4,15 +4,12 @@
     
 ## 二. 关于我们
     我们是一群有理想、有抱负的愤青，一直不满足于当下的技术积累，决定团结一致，追求更高深的技术！
-    
     组织发起者：Tikie
     QQ:290313636
     QQ群：282781158
-    [资料](https://www.gitbook.com/book/290315636/springmvc/details)
-    [百度](https://www.baidu.com/)
-    
     主要负责人：tikie
     开发人员：tikie,and so on 
+   项目详情，请查看[项目官方介绍文档](https://www.gitbook.com/book/290315636/springmvc/details "项目官方文档")
     
 ## 三. 技术方向
     javaWeb相关技术
@@ -21,48 +18,11 @@
     
     ElasticSearch
     
-## 四. 更新
-    1.0.1 更改为注解模式,方法已同步到gitbook
-    
-    1.1.1 增加mybatis-spring技术,实现数据持久化(c3p0为数据源连接池实现,连接mysql5.6+数据库)
-    
-    1.2.1 增加shiro权限控制和beetl\jsp视图支持
-    1.2.2 增加异步请求返回数据封装格式
-    1.2.3 更新shiro-principal携带的用户信息
-    
-    1.3.1 数据库时间字段默认值统一为当前时间
-          更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
-    1.3.2 数据库isActive更改默认值为1，isDelete默认值为0，isSys默认值为1     
-          
-    1.4.1 更新常用工具类，添加允许跨域访问过滤器
-    
-    1.5.1 项目增加develop和proposed分支，在develop分支上开发，确定没问题了提交到proposed分支，项目负责人确定没问题后更新proposed分支到master主分支
-    
-    1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
-    1.6.2 暂时去掉子模块 前端页面不太成熟，成型后再做成子模块
-    
-    1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
-    
-    1.8.1 service层增加缓存处理（测试类需要启动服务才能使用缓存）
-    1.8.2 UserService增加其他方法
-    
-    1.9.1 使用mybatis generator生成service基本代码
-    1.9.2 生成的代码--插入时改为自增主键，增加基于example的动态where条件处理
-    1.9.3 生成代码及使用步骤
-          1. 更改resources/config/test/jdbc.properties中的配置（主要更改模块名）
-          2. 更改resources/generatorConfig.xml关于表的配置（基于哪些表生成对应的代码）
-          3. 运行maven命令：mvn mybatis-generator:generate
-          4. 对于每个生成的Mapper接口增加@MyBatisRepository注解
-          5. 书写service层接口及实现
-          6. 书写测试类
-          ps:可参考generator模块学习基本使用方法
-          
-    2.0.0 更新pom依赖，去掉过时依赖
-    
-    2.1.0 前端技术增加RequireJS,测试用例请看/static/js下的代码
+## 四.加入我们
+    直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。
     
 ## 五. 下次更新 
-    后台管理模块之权限管理  
+    项目整体架构说明   
         
     
 ## 六. 开发规范
@@ -117,5 +77,47 @@
         2. 接口采取见名知义\言简意赅的原则,如:getById(或get),add,delete,update,getAll,getSimilarByMessage等
         3. add和update返回值为true／false,delete返回删除成功了几条数据
         
-## 七.加入我们
-    直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。
+   页面和css规范：
+        参照[bootstrap 中html、css的编码规范](http://codeguide.bootcss.com/#html-reducing-markup "编写灵活、稳定、高质量的 HTML 和 CSS 代码的规范")
+
+## 七. 历史更新
+    1.0.1 更改为注解模式,方法已同步到gitbook
+    
+    1.1.1 增加mybatis-spring技术,实现数据持久化(c3p0为数据源连接池实现,连接mysql5.6+数据库)
+    
+    1.2.1 增加shiro权限控制和beetl\jsp视图支持
+    1.2.2 增加异步请求返回数据封装格式
+    1.2.3 更新shiro-principal携带的用户信息
+    
+    1.3.1 数据库时间字段默认值统一为当前时间
+          更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
+    1.3.2 数据库isActive更改默认值为1，isDelete默认值为0，isSys默认值为1     
+          
+    1.4.1 更新常用工具类，添加允许跨域访问过滤器
+    
+    1.5.1 项目增加develop和proposed分支，在develop分支上开发，确定没问题了提交到proposed分支，项目负责人确定没问题后更新proposed分支到master主分支
+    
+    1.6.1 增加页面子模块 https://github.com/Dreaming-league/static.git
+    1.6.2 暂时去掉子模块 前端页面不太成熟，成型后再做成子模块
+    
+    1.7.1 集成HikariCP数据源(统计表明比c3p0快20%，感谢mujourney的建议)
+    
+    1.8.1 service层增加缓存处理（测试类需要启动服务才能使用缓存）
+    1.8.2 UserService增加其他方法
+    
+    1.9.1 使用mybatis generator生成service基本代码
+    1.9.2 生成的代码--插入时改为自增主键，增加基于example的动态where条件处理
+    1.9.3 生成代码及使用步骤
+          1. 更改resources/config/test/jdbc.properties中的配置（主要更改模块名）
+          2. 更改resources/generatorConfig.xml关于表的配置（基于哪些表生成对应的代码）
+          3. 运行maven命令：mvn mybatis-generator:generate
+          4. 对于每个生成的Mapper接口增加@MyBatisRepository注解
+          5. 书写service层接口及实现
+          6. 书写测试类
+          ps:可参考generator模块学习基本使用方法
+          
+    2.0.0 更新pom依赖，去掉过时依赖
+    
+    2.1.0 前端技术增加RequireJS,测试用例请看/static/js下的代码
+    
+ 
