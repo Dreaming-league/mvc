@@ -12,17 +12,17 @@
    项目详情，请查看[项目官方介绍文档](https://www.gitbook.com/book/290315636/springmvc/details "项目官方文档")
     
 ## 三. 技术方向
-    javaWeb相关技术
+  1. 本项目系统架构
     
-    python相关技术
-    
-    ElasticSearch
+  
+  2. 本项目技术架构
+
     
 ## 四.加入我们
     直接发送你的git账号到290315636@qq.com邮箱，申请加入权限，或加入梦想群申请加入。
     
 ## 五. 下次更新 
-    项目整体架构说明   
+    数据库设计、接口设计、markdown说明文档整理   
         
     
 ## 六. 开发规范
@@ -119,5 +119,8 @@
     2.0.0 更新pom依赖，去掉过时依赖
     
     2.1.0 前端技术增加RequireJS,测试用例请看/static/js下的代码
-    
+    2.1.1 RequireJS增加自动打包maven插件，上线后把debugMode改为false会使用build下的静态资源
  
+ 
+ ## 八. 相关技术学习地址
+ 1. [RequireJs慕课网视频](http://www.imooc.com/learn/787 "项目官方文档")

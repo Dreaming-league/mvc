@@ -19,4 +19,6 @@ public class Login {
     private String account;         //账号
     private String pwd;             //密码
     private String rememberMe;      //记住我
+    private String inviteCode;      //邀请码
+    private String goUrl;           //登录成功后跳转的URL
 }

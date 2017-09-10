@@ -11,6 +11,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -27,7 +28,7 @@ import java.security.NoSuchAlgorithmException;
  * @version     1.0.0
  */
 @Controller
-@RequestMapping(value = "/f")
+@RequestMapping(value = "/")
 public class LoginController {
     @Autowired
     private UserService userService;
@@ -35,19 +36,27 @@ public class LoginController {
     /**
      * @target      跳转到登录页面
      *
-     * @return      ModelAndView    跳转到hello页面
+     * @return      ModelAndView    跳转到对应login页面
      *              即WEB-INF/views/jsp/login.jsp页面
      */
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
-    public ModelAndView toLogin(){
+    @RequestMapping(value = "/{module}/login",method = RequestMethod.GET)
+    public ModelAndView toLogin(@PathVariable ("module")String module){
         ModelAndView mv = new ModelAndView();
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-        mv.setViewName("login.jsp");
+        mv.setViewName(module + "/login.jsp");
         return mv;
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public ModelAndView login(Login login,HttpSession session) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    /**
+     * 更新为指定页面跳转
+     * @param login
+     * @param session
+     * @return 登录成功页面
+     * @throws UnsupportedEncodingException
+     * @throws NoSuchAlgorithmException
+     */
+    @RequestMapping(value = "/{module}/login",method = RequestMethod.POST)
+    public ModelAndView login(@PathVariable ("module")String module, Login login,HttpSession session) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         ModelAndView mv = new ModelAndView();
         //输入非空校验
         if(StringUtils.isEmpty(login.getAccount()) || StringUtils.isEmpty(login.getPwd())){
@@ -57,8 +66,13 @@ public class LoginController {
         }
 
         User user = userService.getByAccount(login.getAccount());
-        if(user ==null || !user.getPwd().equals(new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())))){
-            session.setAttribute("message","用户不存在或密码错误");
+        //TODO 邀请码验证，用户详情和登录信息分离;登录成功后验证有没有此应用/模块的使用权限
+        if(null == user){
+            session.setAttribute("message","用户不存在");
+            mv.setViewName("login.jsp");
+            return mv;
+        }else if(!user.getPwd().equals(new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())))){
+            session.setAttribute("message","用户密码错误");
             mv.setViewName("login.jsp");
             return mv;
         }else{
@@ -76,14 +90,15 @@ public class LoginController {
             //验证通过
             mv.addObject("message", "登录成功");
             //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
-            mv.setViewName("index.jsp");
+            String goUrl = StringUtils.isEmpty(login.getGoUrl())?"index.jsp":login.getGoUrl();
+            mv.setViewName(goUrl);
             return mv;
         }
     }
 
 
     @RequiresAuthentication
-    @RequestMapping(value = "/logout",method = RequestMethod.GET)
+    @RequestMapping(value = "/f/logout",method = RequestMethod.GET)
     public ModelAndView logout(){
         SecurityUtils.getSubject().logout();
         return new ModelAndView("hello.jsp");

@@ -1,0 +1,25 @@
+{
+  "name": "spring-mvc",
+  "version": "1.0.0",
+  "description": "梦想联盟练手项目，自动打包静态资源",
+  "main": "index.js",
+  "scripts": {
+    "package": "node src/main/webapp/static/r.js -o src/main/webapp/static/app.build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dreaming-league/mvc.git"
+  },
+  "keywords": [
+    "spring",
+    "mvc",
+    "梦想",
+    "联盟"
+  ],
+  "author": "tikie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Dreaming-league/mvc/issues"
+  },
+  "homepage": "https://github.com/Dreaming-league/mvc#readme"
+}

@@ -91,7 +91,17 @@ public class Global {
 	public static String getFrontPath() {
 		return getConfig("frontPath");
 	}
-	
+
+	/**
+	 * 获取静态资源根路径
+	 */
+	public static String getStaticPath() {
+		if(getConfig("debugMode").equalsIgnoreCase("true")){
+			return "static";
+		}
+		return "build";
+	}
+
 	/**
 	 * 获取URL后缀
 	 */
