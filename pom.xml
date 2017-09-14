@@ -412,6 +412,7 @@
             <configuration>
               <nodeVersion>v6.9.1</nodeVersion>
               <npmVersion>3.10.9</npmVersion>
+              <nodeDownloadRoot>https://npm.taobao.org/mirrors/node/</nodeDownloadRoot>
             </configuration>
           </execution>
           <execution>
@@ -425,7 +426,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 </project>
