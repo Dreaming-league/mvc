@@ -10,6 +10,7 @@ requirejs.config({
     paths: {//模块对应的具体路径
         "jquery": "lib/jquery",
         "helper": "test/helper",
+        "bgImg": "login/bgImg",
         "api": "test/api",
         "api2": "test/api2",
         "user": "test/user",

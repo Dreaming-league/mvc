@@ -61,7 +61,7 @@ public class LoginController {
         //输入非空校验
         if(StringUtils.isEmpty(login.getAccount()) || StringUtils.isEmpty(login.getPwd())){
             session.setAttribute("message","用户名或密码为空");
-            mv.setViewName("login.jsp");
+            mv.setViewName(module + "/login.jsp");
             return mv;
         }
 
@@ -69,11 +69,11 @@ public class LoginController {
         //TODO 邀请码验证，用户详情和登录信息分离;登录成功后验证有没有此应用/模块的使用权限
         if(null == user){
             session.setAttribute("message","用户不存在");
-            mv.setViewName("login.jsp");
+            mv.setViewName(module + "/login.jsp");
             return mv;
         }else if(!user.getPwd().equals(new EncrypMD5().EncoderByMd5(new EncrypMD5().EncoderByMd5(login.getPwd())))){
             session.setAttribute("message","用户密码错误");
-            mv.setViewName("login.jsp");
+            mv.setViewName(module + "/login.jsp");
             return mv;
         }else{
             //获取密码令牌并验证
