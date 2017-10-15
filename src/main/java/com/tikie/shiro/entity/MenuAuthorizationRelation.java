@@ -1,10 +1,9 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Relation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
 
 /**
  * @author TiKie
@@ -14,7 +13,7 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MenuAuthorizationRelation implements Serializable {
+public class MenuAuthorizationRelation extends Relation{
     private String menuId;
     private String authId;
 }

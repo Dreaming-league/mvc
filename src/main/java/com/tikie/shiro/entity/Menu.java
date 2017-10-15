@@ -25,6 +25,8 @@ public class Menu extends Entity{
     private String sysId;           //系统ID
     private Integer order;          //顺序
 
+    private List<MenuAuthorizationRelation> authRelationList;    //被哪些权限拥有
+
     private List<Menu> children;
 
 }

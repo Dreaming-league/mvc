@@ -1,5 +1,6 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Relation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,18 +18,10 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RolePermissionRelation implements Serializable {
+public class RolePermissionRelation extends Relation {
 
     private String roleId;
     private String permissionId;
 
-    private Boolean isActive;        //是否有效/启用
     private Boolean isDelete;        //是否逻辑删除
-
-    private String createdBy;
-    private String updatedBy;
-    private String createdTime;
-    private String updatedTime;
-
-    private String note;            //备注
 }

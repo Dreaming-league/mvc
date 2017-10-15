@@ -1,5 +1,6 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Relation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -12,8 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GroupRoleRelation {
+public class GroupRoleRelation extends Relation {
     private String groupId;
     private String roleId;
-    private Boolean isActive;        //是否有效/启用
 }

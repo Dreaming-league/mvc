@@ -21,7 +21,7 @@ public class Authorization extends Entity {
     private String permission;        //权限标识
     private String type;              //权限类型
 
-    private List<RoleAuthorizationRelation> roleRelationList;    //被哪些角色关系拥有
+    private List<RoleAuthorizationRelation> roleRelationList;    //被哪些角色拥有
 
     private List<Authorization> children;                        //子权限
 
