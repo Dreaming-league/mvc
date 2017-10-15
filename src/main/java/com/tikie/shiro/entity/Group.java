@@ -1,5 +1,6 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,12 +15,9 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Group implements Serializable {
-    private String id;
-
+public class Group extends Entity{
     private String userId;          //用户ID
     private String name;            //名称
     private Integer order;          //顺序
 
-    private Boolean isActive;        //是否有效/启用
 }

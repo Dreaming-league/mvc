@@ -67,11 +67,11 @@ LOCK TABLES `shiro_permission` WRITE;
 
 INSERT INTO `shiro_permission` (`id`, `parentId`, `name`, `permission`, `type`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`, `e`)
 VALUES
-	('0',-1,'最高权限','super:super','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	('1',0,'浏览权限','user:scan','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	('5',0,'编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	('6',1,'编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	('7',1,'浏览权限','user:query','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL);
+	('0','-1','最高权限','super:super','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('1','0','浏览权限','user:scan','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('5','0','编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('6','1','编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('7','1','浏览权限','user:query','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL);
 
 /*!40000 ALTER TABLE `shiro_permission` ENABLE KEYS */;
 UNLOCK TABLES;

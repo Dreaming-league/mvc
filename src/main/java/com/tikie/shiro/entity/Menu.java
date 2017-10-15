@@ -1,8 +1,12 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.List;
 
 /**
  * @author TiKie
@@ -12,16 +16,15 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Menu {
-    private String id;
-
-    private String pId;             //用户ID
-    private String type;            //名称
-    private String icon;            //名称
-    private String url;             //名称
-    private String accessCode;      //名称
-    private String sysId;           //名称
+public class Menu extends Entity{
+    private String parentId;        //父级ID
+    private String type;            //类型
+    private String icon;            //图标
+    private String url;             //URL
+    private String accessCode;      //访问码
+    private String sysId;           //系统ID
     private Integer order;          //顺序
 
-    private Boolean isActive;       //是否有效/启用
+    private List<Menu> children;
+
 }

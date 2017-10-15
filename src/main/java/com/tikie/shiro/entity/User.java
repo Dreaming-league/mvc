@@ -1,5 +1,6 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User implements Serializable {
-    private String id;
+public class User extends Entity {
     private String account;         //账号
     private String pwd;             //密码
 
@@ -57,19 +57,8 @@ public class User implements Serializable {
 
     private List<UserRoleRelation> roleRelationList;    //拥有的角色关系
 
-    private Boolean isActive;        //是否有效/启用
     private Boolean isSys;           //是否系统用户
-    private Boolean isDelete;        //是否逻辑删除
-
-    private String createdBy;
-    private String updatedBy;
-    private Date createdTime;
-    private Date updatedTime;
-
-    private String note;            //备注
 
     private String e;              //扩展字段
-
-
 
 }

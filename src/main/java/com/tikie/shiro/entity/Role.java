@@ -1,5 +1,6 @@
 package com.tikie.shiro.entity;
 
+import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,24 +19,12 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role implements Serializable {
-    private String id;
-
+public class Role extends Entity{
     private String name;            //角色名称
     private String permission;      //权限标识
 
     private List<UserRoleRelation>          userRelationList;          //被哪些用户关系拥有
     private List<RolePermissionRelation>    permissionRelationList;    //拥有哪些权限关系
-
-    private Boolean isActive;        //是否有效/启用
-    private Boolean isDelete;        //是否逻辑删除
-
-    private String createdBy;
-    private String updatedBy;
-    private String createdTime;
-    private String updatedTime;
-
-    private String note;            //备注
 
     private String e;              //扩展字段
 

@@ -6,28 +6,23 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
 /**
- * @targget     权限实体类
- *
- * @author      tikie
- * @date        2016-10-02
- * @version     1.0.0
+ * @author TiKie
+ * @desc 权限实体类
+ * @date 2017/10/15
  */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Permission extends Entity {
+public class Authorization extends Entity {
     private String name;              //权限名称
     private String permission;        //权限标识
     private String type;              //权限类型
 
-    private List<RolePermissionRelation> roleRelationList;    //被哪些角色关系拥有
+    private List<RoleAuthorizationRelation> roleRelationList;    //被哪些角色关系拥有
 
-    private List<Permission> children;                        //子权限
-
-    private String e;               //扩展字段
+    private List<Authorization> children;                        //子权限
 
 }
