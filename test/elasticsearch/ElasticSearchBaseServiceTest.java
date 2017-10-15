@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  * 2016/11/24
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/config/test/applicationContext_test.xml"})
+@ContextConfiguration(locations = {"/config/test/applicationContext_test.xml"})
 public class ElasticSearchBaseServiceTest {
 
     @Autowired

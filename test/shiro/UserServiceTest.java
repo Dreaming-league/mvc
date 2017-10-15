@@ -5,10 +5,10 @@ import com.tikie.shiro.entity.User;
 import com.tikie.shiro.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.List;
 
@@ -20,9 +20,9 @@ import java.util.List;
  * @version     1.0.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/config/test/applicationContext_test.xml"})
+@ContextConfiguration(locations = {"/config/test/applicationContext_test.xml"})
 public class UserServiceTest {
-    @Autowired
+    @Resource
     private UserService userService;
 
 //    @Test

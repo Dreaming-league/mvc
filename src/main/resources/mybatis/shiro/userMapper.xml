@@ -83,11 +83,14 @@
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
-    <insert id="add" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+    <insert id="add" parameterType="User">
+        <selectKey keyProperty="id" resultType="String" order="BEFORE">
+            select  replace(uuid(),'-','')   from dual
+        </selectKey>
         insert into `shiro_user`(
-          `account`,  `pwd` ,  `nickName` ,  `sex` ,  `photo` ,  `sign`,  `skin`,  `score` ,  `honor`,  `realName` ,  `NID` ,  `phone` ,  `email` ,  `company`,  `title` ,  `position` ,  `QQ`,  `weChat` ,  `QRCode`,  `microBlog`,  `renRen`,  `twitter`,  `facebook`,  `postcode`,  `nowAddress`,  `homeland`,  `isActive` ,  `isSys` ,  `isDelete`,  `createdBy`,  `updatedBy` ,  `createdTime`,  `updatedTime`,  `note`,  `e`
+          `id`, `account`,  `pwd` ,  `nickName` ,  `sex` ,  `photo` ,  `sign`,  `skin`,  `score` ,  `honor`,  `realName` ,  `NID` ,  `phone` ,  `email` ,  `company`,  `title` ,  `position` ,  `QQ`,  `weChat` ,  `QRCode`,  `microBlog`,  `renRen`,  `twitter`,  `facebook`,  `postcode`,  `nowAddress`,  `homeland`,  `isActive` ,  `isSys` ,  `isDelete`,  `createdBy`,  `updatedBy` ,  `createdTime`,  `updatedTime`,  `note`,  `e`
         )values(
-          #{account},#{pwd},#{nickName},#{sex},#{photo},#{sign},#{skin},#{score},#{honor},#{realName},#{NID},#{phone},#{email},#{company},#{title},#{position},#{QQ},#{weChat},#{QRCode},#{microBlog},#{renRen},#{twitter},#{facebook},#{postcode},#{nowAddress},#{homeland},#{isActive},#{isSys},#{isDelete},#{createdBy},#{updatedBy},#{createdTime},#{updatedTime},#{note},#{e}
+          #{id},#{account},#{pwd},#{nickName},#{sex},#{photo},#{sign},#{skin},#{score},#{honor},#{realName},#{NID},#{phone},#{email},#{company},#{title},#{position},#{QQ},#{weChat},#{QRCode},#{microBlog},#{renRen},#{twitter},#{facebook},#{postcode},#{nowAddress},#{homeland},#{isActive},#{isSys},#{isDelete},#{createdBy},#{updatedBy},#{createdTime},#{updatedTime},#{note},#{e}
         )
     </insert>
 

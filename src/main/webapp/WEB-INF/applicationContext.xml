@@ -9,7 +9,7 @@
     <context:property-placeholder location="classpath*:/config/dev/*.properties" ignore-resource-not-found="true" system-properties-mode="OVERRIDE" />
 
     <!-- 加载配置属性文件 -->
-    <context:property-placeholder ignore-unresolvable="true" location="classpath:/config/dev/*.properties" />
+    <context:property-placeholder location="classpath:/config/dev/*.properties" ignore-unresolvable="true"  />
 
     <!-- 加载应用属性实例，可通过  @Value("#{APP_PROP['jdbc.driver']}") String jdbcDriver 方式引用 -->
     <util:properties id="APP_PROP" location="classpath:/config/dev/*.properties" local-override="true"/>

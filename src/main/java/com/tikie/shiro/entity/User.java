@@ -58,7 +58,7 @@ public class User implements Serializable {
     private List<UserRoleRelation> roleRelationList;    //拥有的角色关系
 
     private Boolean isActive;        //是否有效/启用
-    private String isSys;           //是否系统用户
+    private Boolean isSys;           //是否系统用户
     private Boolean isDelete;        //是否逻辑删除
 
     private String createdBy;

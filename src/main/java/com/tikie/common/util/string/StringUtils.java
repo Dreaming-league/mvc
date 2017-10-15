@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.tikie.common.util.SpringContextHolder;
+//import com.tikie.common.util.SpringContextHolder;
 import com.tikie.common.util.tool.Encodes;
 import org.apache.commons.lang3.StringEscapeUtils;
 import org.springframework.web.context.request.RequestContextHolder;
@@ -244,12 +244,12 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 	/**
 	 * 获得i18n字符串
 	 */
-	public static String getMessage(String code, Object[] args) {
-		LocaleResolver localLocaleResolver = (LocaleResolver) SpringContextHolder.getBean(LocaleResolver.class);
-		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();  
-		Locale localLocale = localLocaleResolver.resolveLocale(request);
-		return SpringContextHolder.getApplicationContext().getMessage(code, args, localLocale);
-	}
+//	public static String getMessage(String code, Object[] args) {
+//		LocaleResolver localLocaleResolver = (LocaleResolver) SpringContextHolder.getBean(LocaleResolver.class);
+//		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+//		Locale localLocale = localLocaleResolver.resolveLocale(request);
+//		return SpringContextHolder.getApplicationContext().getMessage(code, args, localLocale);
+//	}
 	
 	/**
 	 * 获得用户远程地址

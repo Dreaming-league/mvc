@@ -19,7 +19,7 @@ import java.util.List;
  * @version     1.0.0
  */
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { "/config/test/applicationContext_test.xml"})
+@ContextConfiguration(locations = {"/config/test/applicationContext_test.xml"})
 public class HelloWorldServiceTest {
 
     @Autowired
