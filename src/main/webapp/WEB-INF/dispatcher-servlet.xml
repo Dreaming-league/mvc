@@ -44,6 +44,12 @@
         <property name="order" value="2"/>
     </bean>
 
+    <!--文件上传下载专用的视图解析器CommonsMultipartResolver -->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxInMemorySize" value="104857600" /> <!-- 最大内存大小 (10240) -->
+        <property name="maxUploadSize" value="-1" /> <!-- 最大文件大小，-1为无限止(-1) -->
+    </bean>
+
     <!-- 定义无Controller的path<->view直接映射 -->
     <mvc:view-controller path="/" view-name="index" />
     <mvc:view-controller path="/index" view-name="index" />

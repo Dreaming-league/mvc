@@ -48,10 +48,9 @@
         <property name="annotationClass" value="com.tikie.test.mapper.MyBatisRepository"/>
     </bean>
 
-    <!--文件上传下载专用的视图解析器CommonsMultipartResolver -->
-    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-        <property name="maxInMemorySize" value="104857600" /> <!-- 最大内存大小 (10240) -->
-        <property name="maxUploadSize" value="-1" /> <!-- 最大文件大小，-1为无限止(-1) -->
+    <!-- 缓存配置 -->
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+        <property name="configLocation" value="classpath:${ehcache.configFile}" />
     </bean>
 
 </beans>

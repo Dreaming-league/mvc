@@ -32,8 +32,8 @@ public class Role implements Serializable {
 
     private String createdBy;
     private String updatedBy;
-    private Date createdTime;
-    private Date updatedTime;
+    private String createdTime;
+    private String updatedTime;
 
     private String note;            //备注
 
