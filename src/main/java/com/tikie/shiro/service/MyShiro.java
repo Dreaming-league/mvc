@@ -138,7 +138,7 @@ public class MyShiro extends AuthorizingRealm {
 
         private static final long serialVersionUID = 1L;
 
-        private Long id;             // 编号
+        private String id;             // 编号
         private String account;         // 登录名
         private String nickName;        //昵称:页面显示
         private String photo;           //头像

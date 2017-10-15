@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission implements Serializable {
-    private Long id;
+    private String id;
 
     private String name;              //权限名称
     private String permission;        //权限标识
@@ -29,8 +29,8 @@ public class Permission implements Serializable {
 
     private List<Permission> children;                        //子权限
 
-    private String isActive;        //是否有效/启用
-    private String isDelete;        //是否逻辑删除
+    private Boolean isActive;        //是否有效/启用
+    private Boolean isDelete;        //是否逻辑删除
 
     private String createdBy;
     private String updatedBy;

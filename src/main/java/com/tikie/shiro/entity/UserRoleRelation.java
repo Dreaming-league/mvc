@@ -18,11 +18,11 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRoleRelation implements Serializable {
-    private Long userId;
-    private Long roleId;
+    private String userId;
+    private String roleId;
 
-    private String isActive;        //是否有效/启用
-    private String isDelete;        //是否逻辑删除
+    private Boolean isActive;        //是否有效/启用
+    private Boolean isDelete;        //是否逻辑删除
 
     private String createdBy;
     private String updatedBy;

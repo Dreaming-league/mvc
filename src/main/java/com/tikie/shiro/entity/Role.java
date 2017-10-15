@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Role implements Serializable {
-    private Long id;
+    private String id;
 
     private String name;            //角色名称
     private String permission;      //权限标识
@@ -27,8 +27,8 @@ public class Role implements Serializable {
     private List<UserRoleRelation>          userRelationList;          //被哪些用户关系拥有
     private List<RolePermissionRelation>    permissionRelationList;    //拥有哪些权限关系
 
-    private String isActive;        //是否有效/启用
-    private String isDelete;        //是否逻辑删除
+    private Boolean isActive;        //是否有效/启用
+    private Boolean isDelete;        //是否逻辑删除
 
     private String createdBy;
     private String updatedBy;

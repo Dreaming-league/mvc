@@ -11,5 +11,5 @@ import com.tikie.shiro.entity.Role;
  */
 public interface RoleService {
 
-    Role getById(Long id);
+    Role getById(String id);
 }

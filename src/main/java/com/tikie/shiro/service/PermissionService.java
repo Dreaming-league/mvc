@@ -12,5 +12,5 @@ import com.tikie.shiro.entity.Permission;
 public interface PermissionService {
 
 
-    Permission getById(Long id);
+    Permission getById(String id);
 }

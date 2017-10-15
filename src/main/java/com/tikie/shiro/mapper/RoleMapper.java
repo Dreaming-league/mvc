@@ -14,5 +14,5 @@ import org.springframework.data.repository.query.Param;
 @MyBatisRepository
 public interface RoleMapper {
 
-    Role getById(@Param("id") Long id);
+    Role getById(@Param("id") String id);
 }

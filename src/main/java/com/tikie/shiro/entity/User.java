@@ -19,7 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User implements Serializable {
-    private Long id;
+    private String id;
     private String account;         //账号
     private String pwd;             //密码
 
@@ -57,9 +57,9 @@ public class User implements Serializable {
 
     private List<UserRoleRelation> roleRelationList;    //拥有的角色关系
 
-    private String isActive;        //是否有效/启用
+    private Boolean isActive;        //是否有效/启用
     private String isSys;           //是否系统用户
-    private String isDelete;        //是否逻辑删除
+    private Boolean isDelete;        //是否逻辑删除
 
     private String createdBy;
     private String updatedBy;

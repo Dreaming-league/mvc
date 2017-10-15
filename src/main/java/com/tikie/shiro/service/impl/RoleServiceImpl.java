@@ -20,7 +20,7 @@ public class RoleServiceImpl implements RoleService{
     @Autowired
     RoleMapper roleMapper;
 
-    public Role getById(Long id){
+    public Role getById(String id){
         return roleMapper.getById(id);
     }
 }

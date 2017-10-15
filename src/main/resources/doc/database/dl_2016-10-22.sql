@@ -20,6 +20,13 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+DROP DATABASE IF EXISTS dl;
+
+CREATE DATABASE dl DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE dl;
+
+
 # Dump of table helloworld
 # ------------------------------------------------------------
 
@@ -39,13 +46,13 @@ CREATE TABLE `helloworld` (
 DROP TABLE IF EXISTS `shiro_permission`;
 
 CREATE TABLE `shiro_permission` (
-  `id` bigint(32) NOT NULL AUTO_INCREMENT,
-  `parentId` bigint(32) NOT NULL,
+  `id` VARCHAR(32) NOT NULL,
+  `parentId` VARCHAR(32) NOT NULL,
   `name` varchar(32) DEFAULT NULL COMMENT '权限名称',
   `permission` varchar(32) DEFAULT NULL COMMENT '权限标识',
   `type` varchar(32) DEFAULT NULL COMMENT '权限类型',
-  `isActive` varchar(32) DEFAULT NULL COMMENT '是否有效/启用',
-  `isDelete` varchar(32) DEFAULT NULL COMMENT '是否逻辑删除',
+  `isActive` tinyint(1) DEFAULT 0 COMMENT '是否有效/启用',
+  `isDelete` tinyint(1) DEFAULT 0 COMMENT '是否逻辑删除',
   `createdBy` varchar(32) DEFAULT NULL COMMENT 'createdBy',
   `updatedBy` varchar(32) DEFAULT NULL COMMENT 'updatedBy',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -60,11 +67,11 @@ LOCK TABLES `shiro_permission` WRITE;
 
 INSERT INTO `shiro_permission` (`id`, `parentId`, `name`, `permission`, `type`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`, `e`)
 VALUES
-	(0,-1,'最高权限','super:super','default','1','0','xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	(1,0,'浏览权限','user:scan','default','1','0','xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	(5,0,'编辑权限','user:edit','default','1','0','xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	(6,1,'编辑权限','user:edit','default','1','0','xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
-	(7,1,'浏览权限','user:query','default','1','0','xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL);
+	('0',-1,'最高权限','super:super','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('1',0,'浏览权限','user:scan','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('5',0,'编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('6',1,'编辑权限','user:edit','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL),
+	('7',1,'浏览权限','user:query','default',1,0,'xx','xx','2016-10-09 12:12:21','2016-10-09 12:12:21','f',NULL);
 
 /*!40000 ALTER TABLE `shiro_permission` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -76,11 +83,11 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `shiro_role`;
 
 CREATE TABLE `shiro_role` (
-  `id` bigint(32) NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(32) NOT NULL,
   `name` varchar(32) DEFAULT NULL,
   `permission` varchar(32) DEFAULT NULL COMMENT '角色标识',
-  `isActive` varchar(32) DEFAULT NULL COMMENT '是否有效/启用',
-  `isDelete` varchar(32) DEFAULT NULL COMMENT '是否逻辑删除',
+  `isActive` tinyint(1) DEFAULT 0 COMMENT '是否有效/启用',
+  `isDelete` tinyint(1) DEFAULT 0 COMMENT '是否逻辑删除',
   `createdBy` varchar(32) DEFAULT NULL COMMENT 'createdBy',
   `updatedBy` varchar(32) DEFAULT NULL COMMENT 'updatedBy',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -95,7 +102,7 @@ LOCK TABLES `shiro_role` WRITE;
 
 INSERT INTO `shiro_role` (`id`, `name`, `permission`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`, `e`)
 VALUES
-	(0,'普通用户','defaultRole','1','0','xx','xx','2016-10-09 12:12:12','2016-10-09 12:12:12',NULL,NULL);
+	('0','普通用户','defaultRole',1,0,'xx','xx','2016-10-09 12:12:12','2016-10-09 12:12:12',NULL,NULL);
 
 /*!40000 ALTER TABLE `shiro_role` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -107,10 +114,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `shiro_role_permission_relation`;
 
 CREATE TABLE `shiro_role_permission_relation` (
-  `roleId` bigint(32) NOT NULL COMMENT '角色ID',
-  `permissionId` bigint(32) NOT NULL COMMENT '权限ID',
-  `isActive` varchar(32) DEFAULT NULL COMMENT '是否有效/启用',
-  `isDelete` varchar(32) DEFAULT NULL COMMENT '是否逻辑删除',
+  `roleId` VARCHAR(32) NOT NULL COMMENT '角色ID',
+  `permissionId` VARCHAR(32) NOT NULL COMMENT '权限ID',
+  `isActive` tinyint(1) DEFAULT 0 COMMENT '是否有效/启用',
+  `isDelete` tinyint(1) DEFAULT 0 COMMENT '是否逻辑删除',
   `createdBy` varchar(32) DEFAULT NULL COMMENT 'createdBy',
   `updatedBy` varchar(32) DEFAULT NULL COMMENT 'updatedBy',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -124,7 +131,7 @@ LOCK TABLES `shiro_role_permission_relation` WRITE;
 
 INSERT INTO `shiro_role_permission_relation` (`roleId`, `permissionId`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`)
 VALUES
-	(0,0,'1','0','xx','xx','2016-10-09 12:12:12','2016-10-09 18:18:19','n');
+	('0','0',1,0,'xx','xx','2016-10-09 12:12:12','2016-10-09 18:18:19','n');
 
 /*!40000 ALTER TABLE `shiro_role_permission_relation` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -136,7 +143,7 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `shiro_user`;
 
 CREATE TABLE `shiro_user` (
-  `id` bigint(32) NOT NULL AUTO_INCREMENT,
+  `id` VARCHAR(32) NOT NULL,
   `account` varchar(32) DEFAULT NULL COMMENT '登录账号',
   `pwd` varchar(32) DEFAULT NULL COMMENT '登录密码',
   `nickName` varchar(32) DEFAULT NULL COMMENT '昵称',
@@ -162,8 +169,8 @@ CREATE TABLE `shiro_user` (
   `postcode` varchar(32) DEFAULT NULL COMMENT '邮政编码',
   `nowAddress` varchar(32) DEFAULT NULL COMMENT '现地址',
   `homeland` varchar(32) DEFAULT NULL COMMENT '故乡',
-  `isActive` varchar(32) DEFAULT NULL COMMENT '是否有效/启用',
-  `isDelete` varchar(32) DEFAULT NULL COMMENT '是否逻辑删除',
+  `isActive` tinyint(1) DEFAULT 0 COMMENT '是否有效/启用',
+  `isDelete` tinyint(1) DEFAULT 0 COMMENT '是否逻辑删除',
   `createdBy` varchar(32) DEFAULT NULL COMMENT 'createdBy',
   `updatedBy` varchar(32) DEFAULT NULL COMMENT 'updatedBy',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -178,7 +185,7 @@ LOCK TABLES `shiro_user` WRITE;
 
 INSERT INTO `shiro_user` (`id`, `account`, `pwd`, `nickName`, `photo`, `sign`, `skin`, `score`, `honor`, `realName`, `NID`, `phone`, `email`, `company`, `title`, `position`, `QQ`, `weChat`, `QRCode`, `microBlog`, `renRen`, `twitter`, `facebook`, `postcode`, `nowAddress`, `homeland`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`, `e`)
 VALUES
-	(0,'290315636@qq.com','DIjVZpTC+zvMQW4SLBBy6w==','tikie','xx','xx','xx',1,'xx','xx','1234567890','13621239684','290315636@qq.com','xx','xx','xx','2','w','w','w','w','w','w','w','w','w','1','0','w','w','2016-10-04 00:00:00','2016-10-01 00:00:00','w','w');
+	('0','290315636@qq.com','DIjVZpTC+zvMQW4SLBBy6w==','tikie','xx','xx','xx',1,'xx','xx','1234567890','13621239684','290315636@qq.com','xx','xx','xx','2','w','w','w','w','w','w','w','w','w',1,0,'w','w','2016-10-04 00:00:00','2016-10-01 00:00:00','w','w');
 
 /*!40000 ALTER TABLE `shiro_user` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -190,10 +197,10 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `shiro_user_role_relation`;
 
 CREATE TABLE `shiro_user_role_relation` (
-  `userId` bigint(32) NOT NULL COMMENT '用户ID',
-  `roleId` bigint(32) NOT NULL COMMENT '角色ID',
-  `isActive` varchar(32) DEFAULT NULL COMMENT '是否有效/启用',
-  `isDelete` varchar(32) DEFAULT NULL COMMENT '是否逻辑删除',
+  `userId` VARCHAR (32) NOT NULL COMMENT '用户ID',
+  `roleId` VARCHAR(32) NOT NULL COMMENT '角色ID',
+  `isActive` tinyint(1) DEFAULT 0 COMMENT '是否有效/启用',
+  `isDelete` tinyint(1) DEFAULT 0 COMMENT '是否逻辑删除',
   `createdBy` varchar(32) DEFAULT NULL COMMENT 'createdBy',
   `updatedBy` varchar(32) DEFAULT NULL COMMENT 'updatedBy',
   `createdTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
@@ -207,7 +214,7 @@ LOCK TABLES `shiro_user_role_relation` WRITE;
 
 INSERT INTO `shiro_user_role_relation` (`userId`, `roleId`, `isActive`, `isDelete`, `createdBy`, `updatedBy`, `createdTime`, `updatedTime`, `note`)
 VALUES
-	(0,0,'1','0','xx','xx','2016-10-09 12:12:12','2016-10-09 12:12:12',NULL);
+	('0','0',1,0,'xx','xx','2016-10-09 12:12:12','2016-10-09 12:12:12',NULL);
 
 /*!40000 ALTER TABLE `shiro_user_role_relation` ENABLE KEYS */;
 UNLOCK TABLES;
