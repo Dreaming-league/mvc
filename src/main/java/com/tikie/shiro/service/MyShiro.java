@@ -51,30 +51,30 @@ public class MyShiro extends AuthorizingRealm {
         if(user!=null){
             //权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
             SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
-            //用户的角色集合
-            List<UserRoleRelation> roleRelationList = user.getRoleRelationList();
-            List<Role> roleList = new ArrayList<Role>();
-            Set<String> rolesName = new HashSet<String>();
-            for(UserRoleRelation userRoleRelation:roleRelationList){
-                Role role = roleService.getById(userRoleRelation.getRoleId());
-                if(role!=null){
-                    roleList.add(role);
-                    rolesName.add(role.getPermission());
-                }
-            }
-
-            info.setRoles(rolesName);
-            //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的十行可以不要
-            for (Role role : roleList) {
-                Collection<String> perssions = new ArrayList<String>();
-                List<RolePermissionRelation> permissionRelationList = role.getPermissionRelationList();
-                for(RolePermissionRelation permissionRelation:permissionRelationList){
-                    Permission p = permissionService.getById(permissionRelation.getPermissionId());
-                    //添加所有的权限标识
-                    perssions.addAll(getPerssions(p));
-                }
-                info.addStringPermissions(perssions);
-            }
+            //用户的角色集合 TODO 角色
+//            List<UserRoleRelation> roleRelationList = user.getRoleRelationList();
+//            List<Role> roleList = new ArrayList<Role>();
+//            Set<String> rolesName = new HashSet<String>();
+//            for(UserRoleRelation userRoleRelation:roleRelationList){
+//                Role role = roleService.getById(userRoleRelation.getRoleId());
+//                if(role!=null){
+//                    roleList.add(role);
+//                    rolesName.add(role.getPermission());
+//                }
+//            }
+//
+//            info.setRoles(rolesName);
+//            //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的十行可以不要
+//            for (Role role : roleList) {
+//                Collection<String> perssions = new ArrayList<String>();
+//                List<RolePermissionRelation> permissionRelationList = role.getPermissionRelationList();
+//                for(RolePermissionRelation permissionRelation:permissionRelationList){
+//                    Permission p = permissionService.getById(permissionRelation.getPermissionId());
+//                    //添加所有的权限标识
+//                    perssions.addAll(getPerssions(p));
+//                }
+//                info.addStringPermissions(perssions);
+//            }
 
             return info;
         }

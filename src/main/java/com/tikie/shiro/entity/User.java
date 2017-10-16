@@ -20,6 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends Entity {
+    private String groupId;         //组ID
     private String account;         //账号
     private String pwd;             //密码
 
@@ -55,10 +56,6 @@ public class User extends Entity {
     private String nowAddress;      //现地址
     private String homeland;        //故乡
 
-    private List<UserRoleRelation> roleRelationList;    //拥有的角色关系
-
     private Boolean isSys;           //是否系统用户
-
-    private String e;              //扩展字段
 
 }

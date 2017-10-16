@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 /**
  * @author TiKie
  * @desc 基础关联类属性
@@ -17,8 +19,8 @@ public class Relation {
 
     private String createdBy;        //创建者
     private String updatedBy;        //更新者
-    private String createdTime;      //创建时间
-    private String updatedTime;      //更新时间
+    private Date   createdTime;      //创建时间
+    private Date   updatedTime;      //更新时间
 
     private String note;             //备注
 }

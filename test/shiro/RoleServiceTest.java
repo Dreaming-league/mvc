@@ -28,8 +28,8 @@ public class RoleServiceTest {
 
         System.out.println(role.getId());
         System.out.println(role.getName());
-        System.out.println(role.getUserRelationList().toString());
-        System.out.println(role.getPermissionRelationList().toString());
+        System.out.println(role.getAuthRelationList().toString());
+        System.out.println(role.getGroupRelationList().toString());
     }
 
 }

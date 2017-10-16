@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace = "com.tikie.shiro.mapper.UserMapper">
-    <sql id="userColumns">
-        A.*,
-        R.userId as userId,
-        R.roleId as roleId,
-
-        R.isActive as r_isActive,
-        R.isDelete as r_isDelete,
-        R.createdBy as r_createdBy,
-        R.updatedBy as r_updatedBy,
-        R.createdTime as r_createdTime,
-        R.updatedTime as r_updatedTime,
-        R.note as r_note
-    </sql>
-
-    <resultMap id="UserRoleRelation" type="com.tikie.shiro.entity.UserRoleRelation" />
     <!-- 用户结果集 -->
     <resultMap id="User" type="com.tikie.shiro.entity.User">
         <id property="id" column="id" />
+        <result property="groupId" column="groupId"/>
         <result property="account" column="account"/>
         <result property="pwd" column="pwd"/>
         <result property="nickName" column="nickName"/>
@@ -59,27 +45,13 @@
         <result property="createdTime" column="createdTime"/>
         <result property="updatedTime" column="updatedTime"/>
         <result property="note" column="note"/>
-        <result property="e" column="e"/>
-        <collection property="roleRelationList" ofType="UserRoleRelation">
-            <id property="userId" column="userId" />
-            <id property="roleId" column="roleId" />
-
-            <result property="isActive" column="r_isActive"/>
-            <result property="isDelete" column="r_isDelete"/>
-            <result property="createdBy" column="r_createdBy"/>
-            <result property="updatedBy" column="r_updatedBy"/>
-            <result property="createdTime" column="r_createdTime"/>
-            <result property="updatedTime" column="r_updatedTime"/>
-            <result property="note" column="r_note"/>
-        </collection>
     </resultMap>
 
     <!-- 获取用户信息及用户权限关系信息 -->
     <select id="getById" resultMap="User">
         select
-              <include refid="userColumns"/>
+              A.*
         from `shiro_user` A
-        left outer join `shiro_user_role_relation` R on R.isDelete='0' and R.isActive='1' and A.id = R.userId
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
@@ -88,14 +60,15 @@
             select  replace(uuid(),'-','')   from dual
         </selectKey>
         insert into `shiro_user`(
-          `id`, `account`,  `pwd` ,  `nickName` ,  `sex` ,  `photo` ,  `sign`,  `skin`,  `score` ,  `honor`,  `realName` ,  `NID` ,  `phone` ,  `email` ,  `company`,  `title` ,  `position` ,  `QQ`,  `weChat` ,  `QRCode`,  `microBlog`,  `renRen`,  `twitter`,  `facebook`,  `postcode`,  `nowAddress`,  `homeland`,  `isActive` ,  `isSys` ,  `isDelete`,  `createdBy`,  `updatedBy` ,  `createdTime`,  `updatedTime`,  `note`,  `e`
+          `id`, `groupId`, `account`,  `pwd` ,  `nickName` ,  `sex` ,  `photo` ,  `sign`,  `skin`,  `score` ,  `honor`,  `realName` ,  `NID` ,  `phone` ,  `email` ,  `company`,  `title` ,  `position` ,  `QQ`,  `weChat` ,  `QRCode`,  `microBlog`,  `renRen`,  `twitter`,  `facebook`,  `postcode`,  `nowAddress`,  `homeland`,  `isActive` ,  `isSys` ,  `isDelete`,  `createdBy`,  `updatedBy` ,  `createdTime`,  `updatedTime`,  `note`
         )values(
-          #{id},#{account},#{pwd},#{nickName},#{sex},#{photo},#{sign},#{skin},#{score},#{honor},#{realName},#{NID},#{phone},#{email},#{company},#{title},#{position},#{QQ},#{weChat},#{QRCode},#{microBlog},#{renRen},#{twitter},#{facebook},#{postcode},#{nowAddress},#{homeland},#{isActive},#{isSys},#{isDelete},#{createdBy},#{updatedBy},#{createdTime},#{updatedTime},#{note},#{e}
+          #{id},#{groupId},#{account},#{pwd},#{nickName},#{sex},#{photo},#{sign},#{skin},#{score},#{honor},#{realName},#{NID},#{phone},#{email},#{company},#{title},#{position},#{QQ},#{weChat},#{QRCode},#{microBlog},#{renRen},#{twitter},#{facebook},#{postcode},#{nowAddress},#{homeland},#{isActive},#{isSys},#{isDelete},#{createdBy},#{updatedBy},#{createdTime},#{updatedTime},#{note}
         )
     </insert>
 
     <update id="update">
         update `shiro_user` SET
+         `groupId`  = #{groupId},
          `account`  = #{account},
          `pwd`  = #{pwd},
          `nickName`  = #{nickName},
@@ -129,8 +102,7 @@
          `updatedBy`  = #{updatedBy},
          `createdTime`  = #{createdTime},
          `updatedTime`  = #{updatedTime},
-         `note`  = #{note},
-         `e`  = #{e}
+         `note`  = #{note}
          where id =#{id}
     </update>
 
@@ -146,9 +118,8 @@
     <!-- 获取用户信息及用户权限关系信息 -->
     <select id="getByAccount" resultMap="User">
         select
-        <include refid="userColumns"/>
+            A.*
         from `shiro_user` A
-        left outer join `shiro_user_role_relation` R on R.isDelete='0' and R.isActive='1' and A.id = R.userId
         where A.isDelete='0' and A.isActive='1' and A.account = #{account}
     </select>
 

@@ -3,11 +3,10 @@
 <mapper namespace = "com.tikie.shiro.mapper.RoleMapper">
     <sql id="roleColumns">
         A.*,
-        R.userId as userId,
+        R.groupId as groupId,
         R.roleId as roleId,
 
         R.isActive as r_isActive,
-        R.isDelete as r_isDelete,
         R.createdBy as r_createdBy,
         R.updatedBy as r_updatedBy,
         R.createdTime as r_createdTime,
@@ -15,10 +14,9 @@
         R.note as r_note,
 
         P.roleId as p_roleId,
-        P.permissionId as p_permissionId,
+        P.authId as p_authId,
 
         P.isActive as p_isActive,
-        P.isDelete as p_isDelete,
         P.createdBy as p_createdBy,
         P.updatedBy as p_updatedBy,
         P.createdTime as p_createdTime,
@@ -26,9 +24,9 @@
         P.note as p_note
     </sql>
 
-    <resultMap id="UserRoleRelation" type="com.tikie.shiro.entity.UserRoleRelation" />
-    <resultMap id="RolePermissionRelation" type="com.tikie.shiro.entity.RolePermissionRelation" />
-    <!-- 用户结果集 -->
+    <resultMap id="GroupRoleRelation" type="com.tikie.shiro.entity.GroupRoleRelation" />
+    <resultMap id="RoleAuthorizationRelation" type="com.tikie.shiro.entity.RoleAuthorizationRelation" />
+    <!-- 角色结果集 -->
     <resultMap id="Role" type="com.tikie.shiro.entity.Role">
         <id property="id" column="id" />
         <result property="name" column="name"/>
@@ -41,31 +39,22 @@
         <result property="createdTime" column="createdTime"/>
         <result property="updatedTime" column="updatedTime"/>
         <result property="note" column="note"/>
-        <result property="e" column="e"/>
-        <collection property="userRelationList" ofType="UserRoleRelation">
-            <id property="userId" column="userId" />
+        <collection property="groupRelationList" ofType="GroupRoleRelation">
+            <id property="groupId" column="groupId" />
             <id property="roleId" column="roleId" />
-            <result property="account" column="r_account"/>
-            <result property="nickName" column="r_nickName"/>
-            <result property="photo" column="r_photo"/>
-            <result property="sign" column="r_sign"/>
-            <result property="honor" column="r_honor"/>
-            <result property="name" column="r_name"/>
 
             <result property="isActive" column="r_isActive"/>
-            <result property="isDelete" column="r_isDelete"/>
             <result property="createdBy" column="r_createdBy"/>
             <result property="updatedBy" column="r_updatedBy"/>
             <result property="createdTime" column="r_createdTime"/>
             <result property="updatedTime" column="r_updatedTime"/>
             <result property="note" column="r_note"/>
         </collection>
-        <collection property="permissionRelationList" ofType="RolePermissionRelation">
+        <collection property="authRelationList" ofType="RoleAuthorizationRelation">
             <id property="roleId" column="p_roleId" />
-            <id property="permissionId" column="p_permissionId" />
+            <id property="authId" column="p_permissionId" />
 
             <result property="isActive" column="p_isActive"/>
-            <result property="isDelete" column="p_isDelete"/>
             <result property="createdBy" column="p_createdBy"/>
             <result property="updatedBy" column="p_updatedBy"/>
             <result property="createdTime" column="p_createdTime"/>
@@ -79,8 +68,8 @@
         select
         <include refid="roleColumns"/>
         from `shiro_role` A
-        left outer join `shiro_user_role_relation`        R on R.isDelete='0' and R.isActive='1' and A.id = R.roleId
-        left outer join `shiro_role_permission_relation`  P on P.isDelete='0' and P.isActive='1' and A.id = P.roleId
+        left outer join `shiro_group_role_relation`          R on  R.isActive='1' and A.id = R.roleId
+        left outer join `shiro_role_authorization_relation`  P on  P.isActive='1' and A.id = P.roleId
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
