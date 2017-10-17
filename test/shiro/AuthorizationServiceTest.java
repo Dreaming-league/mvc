@@ -1,13 +1,15 @@
 package shiro;
 
-import com.tikie.shiro.entity.Role;
-import com.tikie.shiro.service.RoleService;
+import com.tikie.shiro.entity.Authorization;
+import com.tikie.shiro.service.AuthorizationService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import javax.validation.constraints.AssertTrue;
 
 /**
  * @targget     测试UserService类
@@ -18,19 +20,19 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"/config/test/applicationContext_test.xml"})
-public class RoleServiceTest {
+public class AuthorizationServiceTest {
 
     @Autowired
-    private RoleService roleService;
+    private AuthorizationService authorizationService;
 
     @Test
     public void testGetById(){
-        Role role = roleService.getById("0");
-        Assert.assertNotNull(role);
-        System.out.println(role.getId());
-        System.out.println(role.getName());
-        System.out.println(role.getAuthRelationList().toString());
-        System.out.println(role.getGroupRelationList().toString());
-    }
+        Authorization auth = authorizationService.getById("0");
 
+        Assert.assertNotNull(auth);
+
+        System.out.println(auth.getName());
+        System.out.println(auth.getRoleRelationList().toString());
+        System.out.println(auth.getChildren().toString());
+    }
 }

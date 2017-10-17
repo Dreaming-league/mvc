@@ -17,7 +17,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu extends Entity{
-    private String parentId;        //父级ID
     private String name;            //类型
     private String type;            //类型
     private String icon;            //图标

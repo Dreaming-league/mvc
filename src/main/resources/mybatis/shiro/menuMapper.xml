@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace = "com.tikie.shiro.mapper.MenuMapper">
+    <sql id="menuColumns">
+        A.*,
+        R.menuId as menuId,
+        R.authId as authId,
+
+        R.isActive as r_isActive,
+        R.createdBy as r_createdBy,
+        R.updatedBy as r_updatedBy,
+        R.createdTime as r_createdTime,
+        R.updatedTime as r_updatedTime,
+        R.note as r_note
+    </sql>
+
+    <resultMap id="MenuAuthorizationRelation" type="com.tikie.shiro.entity.MenuAuthorizationRelation" />
+    <!-- 用户结果集 -->
+    <resultMap id="Menu" type="com.tikie.shiro.entity.Menu">
+        <id property="id" column="id" />
+        <result property="name" column="name"/>
+        <result property="type" column="type"/>
+        <result property="icon" column="icon"/>
+        <result property="url" column="url"/>
+        <result property="accessCode" column="accessCode"/>
+        <result property="sysId" column="sysId"/>
+        <result property="order" column="order"/>
+
+        <result property="isActive" column="isActive"/>
+        <result property="isDelete" column="isDelete"/>
+        <result property="createdBy" column="createdBy"/>
+        <result property="updatedBy" column="updatedBy"/>
+        <result property="createdTime" column="createdTime"/>
+        <result property="updatedTime" column="updatedTime"/>
+        <result property="note" column="note"/>
+        <collection property="authRelationList" ofType="MenuAuthorizationRelation">
+            <id property="menuId" column="menuId" />
+            <id property="authId" column="authId" />
+
+            <result property="isActive" column="r_isActive"/>
+            <result property="createdBy" column="r_createdBy"/>
+            <result property="updatedBy" column="r_updatedBy"/>
+            <result property="createdTime" column="r_createdTime"/>
+            <result property="updatedTime" column="r_updatedTime"/>
+            <result property="note" column="r_note"/>
+        </collection>
+        <collection property="children" ofType="Menu" column="id" select="getChildren" />
+    </resultMap>
+
+    <select id="getChildren" resultMap="Menu">
+        SELECT * FROM `shiro_menu` WHERE parentId=#{id}
+    </select>
+
+    <!-- 获取用户信息及用户权限关系信息 -->
+    <select id="getById" resultMap="Menu">
+        select
+        <include refid="menuColumns"/>
+        from `shiro_menu` A
+        left outer join `shiro_menu_authorization_relation` R on R.isActive='1' and A.id = R.menuId
+        where A.isDelete='0' and A.isActive='1' and A.id = #{id}
+    </select>
+
+
+</mapper>

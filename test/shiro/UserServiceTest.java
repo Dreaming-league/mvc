@@ -3,6 +3,7 @@ package shiro;
 import com.tikie.common.util.response.ResponseJson;
 import com.tikie.shiro.entity.User;
 import com.tikie.shiro.service.UserService;
+import org.apache.shiro.util.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -79,11 +80,12 @@ public class UserServiceTest {
     public void testGetAll(){
         ResponseJson.getInstance().setSize(5);
         List<User> list = userService.getAll();
-        if(list!=null && list.size()>0){
-            for(User user:list){
-                System.out.println("输出内容:"+ user.getAccount());
-                System.out.println("输出内容:"+ user.getNickName());
-            }
+
+        Assert.notEmpty(list);
+
+        for(User user:list){
+            System.out.println("输出内容:"+ user.getAccount());
+            System.out.println("输出内容:"+ user.getNickName());
         }
     }
 }

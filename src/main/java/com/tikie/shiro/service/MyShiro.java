@@ -31,7 +31,7 @@ public class MyShiro extends AuthorizingRealm {
     private RoleService roleService;
 
     @Autowired
-    private PermissionService permissionService;
+    private AuthorizationService authorizationService;
     /**
      *          权限认证
      *
@@ -52,6 +52,7 @@ public class MyShiro extends AuthorizingRealm {
             //权限信息对象info,用来存放查出的用户的所有的角色（role）及权限（permission）
             SimpleAuthorizationInfo info=new SimpleAuthorizationInfo();
             //用户的角色集合 TODO 角色
+
 //            List<UserRoleRelation> roleRelationList = user.getRoleRelationList();
 //            List<Role> roleList = new ArrayList<Role>();
 //            Set<String> rolesName = new HashSet<String>();

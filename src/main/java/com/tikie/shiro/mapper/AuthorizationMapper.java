@@ -1,18 +1,18 @@
 package com.tikie.shiro.mapper;
 
-import com.tikie.shiro.entity.Permission;
+import com.tikie.shiro.entity.Authorization;
 import com.tikie.test.mapper.MyBatisRepository;
 import org.springframework.data.repository.query.Param;
 
 /**
- * @targget     PermissionMapper
+ * @targget     AuthorizationMapper
  *
  * @author      tikie
  * @date        2016-10-09
  * @version     1.0.0
  */
 @MyBatisRepository
-public interface PermissionMapper {
+public interface AuthorizationMapper {
 
-    Permission getById(@Param("id") String id);
+    Authorization getById(@Param("id") String id);
 }

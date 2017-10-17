@@ -7,7 +7,7 @@
     <bean id="myShiro" class="com.tikie.shiro.service.MyShiro"/>
     <bean id="userService" class="com.tikie.shiro.service.impl.UserServiceImpl"/>
     <bean id="roleService" class="com.tikie.shiro.service.impl.RoleServiceImpl"/>
-    <bean id="permissionService" class="com.tikie.shiro.service.impl.PermissionServiceImpl"/>
+    <bean id="authorizationService" class="com.tikie.shiro.service.impl.AuthorizationServiceImpl"/>
 
     <!-- 会话管理器 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
