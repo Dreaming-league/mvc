@@ -2,6 +2,8 @@ package com.tikie.shiro.service;
 
 import com.tikie.shiro.entity.Group;
 
+import java.util.List;
+
 /**
  * @author TiKie
  * @desc 目的
@@ -9,4 +11,6 @@ import com.tikie.shiro.entity.Group;
  */
 public interface GroupService {
     Group getById(String id);
+
+    List<Group> getByIds(String[] ids);
 }

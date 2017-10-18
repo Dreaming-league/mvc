@@ -126,5 +126,7 @@
     <select id="getAll" resultType="User">
         select * from `shiro_user` A where A.isDelete ='0' limit #{start},#{limit}
     </select>
+    
+
 </mapper>
 

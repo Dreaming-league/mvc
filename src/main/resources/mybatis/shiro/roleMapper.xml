@@ -63,7 +63,7 @@
         </collection>
     </resultMap>
 
-    <!-- 获取用户信息及用户权限关系信息 -->
+    <!-- 获取用户组权限信息 -->
     <select id="getById" resultMap="Role">
         select
         <include refid="roleColumns"/>
@@ -73,5 +73,16 @@
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
-
+    <select id="getByGroupIds" resultMap="Role">
+        select
+            *
+        from `shiro_role` A
+        where A.isDelete='0' and A.isActive='1' and
+        FIND_IN_SET(id,(SELECT GROUP_CONCAT(roleId) from shiro_group_role_relation WHERE groupId in
+            <foreach collection="array" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+            )
+        )
+    </select>
 </mapper>

@@ -58,5 +58,16 @@
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
-
+    <select id="getByRoleIds" resultMap="Authorization">
+        select
+        *
+        from `shiro_authorization` A
+        where A.isDelete='0' and A.isActive='1' and
+        FIND_IN_SET(id,(SELECT GROUP_CONCAT(authId) from shiro_role_authorization_relation WHERE roleId in
+            <foreach collection="array" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+            )
+        )
+    </select>
 </mapper>

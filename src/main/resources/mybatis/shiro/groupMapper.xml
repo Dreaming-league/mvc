@@ -47,10 +47,18 @@
     <select id="getById" resultMap="Group">
         select
         <include refid="roleColumns"/>
-        from `shiro_role` A
+        from `shiro_group` A
         left outer join `shiro_user`          R on  R.isActive='1' and A.id = R.groupId
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 
-
+    <select id="getByIds" resultMap="Group">
+        select
+            *
+        from `shiro_group` A
+            WHERE A.id in 
+            <foreach collection="array" item="item" open="(" close=")" separator=",">
+                #{item}
+            </foreach>
+    </select>
 </mapper>

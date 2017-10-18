@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * @author TiKie
  * @desc 目的
@@ -26,7 +28,16 @@ public class GroupServiceTest {
         Group group = groupService.getById("0");
         Assert.assertNotNull(group);
         System.out.println(group.getId());
-        System.out.println(group.getName());
+        System.out.println(group.getCreatedTime());
         System.out.println(group.getUserList().toString());
+    }
+
+    @Test
+    public void testGetByIds(){
+        String[] ids = {"0","1"};
+        List<Group> list =  groupService.getByIds(ids);
+        Assert.assertTrue(list.size()>0);
+
+        System.out.println("输出内容:"+ list.toString());
     }
 }

@@ -6,6 +6,8 @@ import com.tikie.shiro.service.GroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @author TiKie
  * @desc 目的
@@ -18,5 +20,9 @@ public class GroupServiceImpl implements GroupService{
 
     public Group getById(String id){
         return groupMapper.getById(id);
+    }
+
+    public List<Group> getByIds(String[] ids){
+        return groupMapper.getByIds(ids);
     }
 }

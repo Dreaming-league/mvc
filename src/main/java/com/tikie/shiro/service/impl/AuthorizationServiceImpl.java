@@ -6,6 +6,8 @@ import com.tikie.shiro.service.AuthorizationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @targget     AuthorizationServiceImpl
  *
@@ -20,5 +22,9 @@ public class AuthorizationServiceImpl implements AuthorizationService {
     AuthorizationMapper authorizationMapper;
     public Authorization getById(String id){
         return authorizationMapper.getById(id);
+    }
+
+    public List<Authorization> getByRoleIds(String[] roleIds){
+        return authorizationMapper.getByRoleIds(roleIds);
     }
 }

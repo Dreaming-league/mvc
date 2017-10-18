@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 /**
  * @targget     测试UserService类
  *
@@ -33,4 +35,11 @@ public class RoleServiceTest {
         System.out.println(role.getGroupRelationList().toString());
     }
 
+    @Test
+    public void testGetByGroupIds(){
+        String[] ids = {"0","1"};
+        List<Role> list = roleService.getByGroupIds(ids);
+        Assert.assertTrue(list.size() > 0);
+        System.out.println("输出内容:"+ list.toString());
+    }
 }

@@ -2,6 +2,8 @@ package com.tikie.shiro.service;
 
 import com.tikie.shiro.entity.Authorization;
 
+import java.util.List;
+
 /**
  * @targget     AuthorizationService
  *
@@ -13,4 +15,6 @@ public interface AuthorizationService {
 
 
     Authorization getById(String id);
+
+    List<Authorization> getByRoleIds(String[] roleIds);
 }

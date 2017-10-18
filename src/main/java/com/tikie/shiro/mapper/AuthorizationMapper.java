@@ -4,6 +4,8 @@ import com.tikie.shiro.entity.Authorization;
 import com.tikie.test.mapper.MyBatisRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * @targget     AuthorizationMapper
  *
@@ -15,4 +17,6 @@ import org.springframework.data.repository.query.Param;
 public interface AuthorizationMapper {
 
     Authorization getById(@Param("id") String id);
+
+    List<Authorization> getByRoleIds(@Param("roleIds") String[] roleIds);
 }

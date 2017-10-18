@@ -4,6 +4,8 @@ import com.tikie.shiro.entity.Group;
 import com.tikie.test.mapper.MyBatisRepository;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 /**
  * @author TiKie
  * @desc 目的
@@ -12,4 +14,6 @@ import org.springframework.data.repository.query.Param;
 @MyBatisRepository
 public interface GroupMapper {
     Group getById(@Param("id") String id);
+
+    List<Group> getByIds(@Param("ids") String[] ids);
 }
