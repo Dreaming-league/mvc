@@ -71,7 +71,7 @@ public class HelloWorldController{
     @RequestMapping(value = "/{module}/index",method = RequestMethod.GET)
     public ModelAndView testRequiresJs(@PathVariable String module){
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("f/test/"+module+"/index.jsp");
+        mv.setViewName("test/"+module+"/index.jsp");
         return mv;
     }
 

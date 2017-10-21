@@ -37,13 +37,41 @@ public class LoginController {
      * @target      跳转到登录页面
      *
      * @return      ModelAndView    跳转到对应login页面
-     *              即WEB-INF/views/jsp/login.jsp页面
+     *              即WEB-INF/views/jsp/{module}/login.jsp页面
      */
     @RequestMapping(value = "/{module}/login",method = RequestMethod.GET)
     public ModelAndView toLogin(@PathVariable ("module")String module){
         ModelAndView mv = new ModelAndView();
         //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
         mv.setViewName(module + "/login.jsp");
+        return mv;
+    }
+
+    /**
+     * @target      跳转到列表页面
+     *
+     * @return      ModelAndView    跳转到对应index页面
+     *              即WEB-INF/views/jsp/{module}/index.jsp页面
+     */
+    @RequestMapping(value = "/{module}/index",method = RequestMethod.GET)
+    public ModelAndView toIndex(@PathVariable ("module")String module){
+        ModelAndView mv = new ModelAndView();
+        //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
+        mv.setViewName(module + "/index.jsp");
+        return mv;
+    }
+
+    /**
+     * @target      跳转到列表页面
+     *
+     * @return      ModelAndView    跳转到对应index页面
+     *              即WEB-INF/views/jsp/{module}/index.jsp页面
+     */
+    @RequestMapping(value = "/shiro/{module}/index",method = RequestMethod.GET)
+    public ModelAndView toShiroIndex(@PathVariable ("module")String module){
+        ModelAndView mv = new ModelAndView();
+        //设置逻辑视图名，视图解析器会根据该名字解析到具体的视图页面
+        mv.setViewName("shiro/" + module + "/index.jsp");
         return mv;
     }
 

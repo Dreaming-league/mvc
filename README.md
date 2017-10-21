@@ -68,7 +68,7 @@
     数据库规范:
     
         1. 数据库字段尽量不做非空,外健限制(限制在代码实现)
-        2. 各个表的ID统一为32位bigint
+        2. 各个表的ID统一为32位uuid
         3. 以后新建的表统一增加模块前缀,如:test_helloworld(表明全小写,字段名驼峰)
         
     接口开发规范:
@@ -88,10 +88,13 @@
     1.2.1 增加shiro权限控制和beetl\jsp视图支持
     1.2.2 增加异步请求返回数据封装格式
     1.2.3 更新shiro-principal携带的用户信息
+    1.2.4 增加用户分组，基于分组做权限、菜单管理
+    1.2.5 初步实现页面布局，需要再次完善
     
-    1.3.1 数据库时间字段默认值统一为当前时间
+    1.3.1 数据库时间字段默认值统一为当前时间，mysql5.7+ 支持
           更新样例：ALTER TABLE `shiro_role` MODIFY COLUMN `createdTime` TIMESTAMP null DEFAULT CURRENT_TIMESTAMP;
-    1.3.2 数据库isActive更改默认值为1，isDelete默认值为0，isSys默认值为1     
+    1.3.2 数据库isActive更改默认值为1，isDelete默认值为0，isSys默认值为1   
+    1.3.3 主键改为32位varchar,用uuid填充
           
     1.4.1 更新常用工具类，添加允许跨域访问过滤器
     

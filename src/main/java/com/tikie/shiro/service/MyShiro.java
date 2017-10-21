@@ -60,17 +60,17 @@ public class MyShiro extends AuthorizingRealm {
             }
 
             Set<String> rolesName = new HashSet<String>();
-            Set<String> rolesId = new HashSet<String>();
-            for(Role role:roleList){
-                if(role!=null){
-                    rolesName.add(role.getPermission());
-                    rolesId.add(role.getId());
+            String[] roleIds = new String[roleList.size()];
+            for(int i=0;i<roleList.size();i++){
+                if(roleList.get(i)!=null){
+                    rolesName.add(roleList.get(i).getPermission());
+                    roleIds[i] = roleList.get(i).getId();
                 }
             }
 
             info.setRoles(rolesName);//设置角色
             //用户的角色对应的所有权限，如果只使用角色定义访问权限，下面的十行可以不要
-            List<Authorization> authList = authorizationService.getByRoleIds((String[])rolesId.toArray());
+            List<Authorization> authList = authorizationService.getByRoleIds(roleIds);
 
             if(null != authList && authList.size() >0){
                 Collection<String> perssions = new ArrayList<String>();
