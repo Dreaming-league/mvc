@@ -59,7 +59,7 @@
                         <li><a href="/f/logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
                     </shiro:user>
                 </ul>
-                <p class="navbar-text navbar-right">欢迎使用本系统</p>
+                <p class="navbar-text navbar-right">欢迎加入梦想联盟</p>
             </div>
         </div>
     </nav>
