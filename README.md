@@ -10,8 +10,7 @@
     主要负责人：tikie
     开发人员：tikie,and so on 
    项目详情，请查看[项目官方介绍文档](https://www.gitbook.com/book/290315636/springmvc/details "项目官方文档")
-   线上
-    稳定版本效果http://www.tikie.top/
+   线上稳定版本效果http://www.tikie.top/
 ## 三. 技术方向
   1. 本项目系统架构
     
