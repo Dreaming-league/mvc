@@ -3,16 +3,17 @@ package com.tikie.shiro.entity;
 import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author TiKie
- * @desc 用户分组
- * @date 2017/10/14
+ * 用户分组
+ * 2017/10/14
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

@@ -34,6 +34,11 @@
                         </a>
                     </li>
                     <li>
+                        <a href="/front/theme/templates/admin/index.html">
+                            模版页面
+                        </a>
+                    </li>
+                    <li>
                         <a href="/shiro/menu/index">
                             菜单管理
                         </a>

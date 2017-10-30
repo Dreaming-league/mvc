@@ -9,8 +9,8 @@ import java.util.Date;
 
 /**
  * @author TiKie
- * @desc 基础实体类属性
- * @date 2017/10/15
+ * 基础实体类属性
+ * 2017/10/15
  */
 @Data
 @NoArgsConstructor
