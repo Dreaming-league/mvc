@@ -9,7 +9,6 @@
     <result column="updatedBy" property="updatedby" jdbcType="VARCHAR" />
     <result column="updatedTime" property="updatedtime" jdbcType="TIMESTAMP" />
     <result column="note" property="note" jdbcType="VARCHAR" />
-    <result column="e" property="e" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -70,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, `name`, isDelete, createdBy, updatedBy, updatedTime, note, e
+    id, `name`, isDelete, createdBy, updatedBy, updatedTime, note
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.tikie.generator.entity.TestExample" >
     select
@@ -131,9 +130,6 @@
       <if test="note != null" >
         note,
       </if>
-      <if test="e != null" >
-        e,
-      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="name != null" >
@@ -153,9 +149,6 @@
       </if>
       <if test="note != null" >
         #{note,jdbcType=VARCHAR},
-      </if>
-      <if test="e != null" >
-        #{e,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -205,8 +198,7 @@
       createdBy = #{record.createdby,jdbcType=VARCHAR},
       updatedBy = #{record.updatedby,jdbcType=VARCHAR},
       updatedTime = #{record.updatedtime,jdbcType=TIMESTAMP},
-      note = #{record.note,jdbcType=VARCHAR},
-      e = #{record.e,jdbcType=VARCHAR}
+      note = #{record.note,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -232,9 +224,6 @@
       <if test="note != null" >
         note = #{note,jdbcType=VARCHAR},
       </if>
-      <if test="e != null" >
-        e = #{e,jdbcType=VARCHAR},
-      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -245,8 +234,7 @@
       createdBy = #{createdby,jdbcType=VARCHAR},
       updatedBy = #{updatedby,jdbcType=VARCHAR},
       updatedTime = #{updatedtime,jdbcType=TIMESTAMP},
-      note = #{note,jdbcType=VARCHAR},
-      e = #{e,jdbcType=VARCHAR}
+      note = #{note,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

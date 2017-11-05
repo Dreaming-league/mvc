@@ -3,19 +3,18 @@ package com.tikie.shiro.entity;
 import com.tikie.base.Relation;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-import java.util.Date;
 
 /**
  *              用户角色关系对照实体类
  *
- * @author      tikie
+ * @author      TiKie
  *              2016-10-02
  * @version     1.0.0
  */
 @Data
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class UserRoleRelation extends Relation {

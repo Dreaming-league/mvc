@@ -13,12 +13,16 @@ import java.util.List;
  * 用户分组
  * 2017/10/14
  */
-@EqualsAndHashCode(callSuper = true)
 @Data
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Group extends Entity{
-    private String name;            //名称
+    /**
+	 * 实现序列化
+	 */
+	private static final long serialVersionUID = 641194615988177110L;
+	private String name;            //名称
     private Integer order;          //顺序
 
     private List<User> userList;    //拥有哪些用户

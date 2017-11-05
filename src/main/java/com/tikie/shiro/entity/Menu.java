@@ -3,21 +3,26 @@ package com.tikie.shiro.entity;
 import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author TiKie
- * @desc 目的
+ * 菜单实体类
  * @date 2017/10/14
  */
 @Data
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Menu extends Entity{
-    private String name;            //类型
+    /**
+	 * 实现序列化
+	 */
+	private static final long serialVersionUID = 7419667789099641843L;
+	private String name;            //类型
     private String type;            //类型
     private String icon;            //图标
     private String url;             //URL

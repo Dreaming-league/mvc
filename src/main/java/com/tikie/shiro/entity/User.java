@@ -3,24 +3,26 @@ package com.tikie.shiro.entity;
 import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
-import java.io.Serializable;
-import java.util.Date;
-import java.util.List;
 
 /**
  *              用户实体类
  *
- * @author      tikie
+ * @author      TiKie
  *              2016-10-02
  * @version     1.0.0
  */
 @Data
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class User extends Entity {
-    private String groupId;         //组ID
+    /**
+	 * 实现序列化
+	 */
+	private static final long serialVersionUID = -2322709510352821591L;
+	private String groupId;         //组ID
     private String account;         //账号
     private String pwd;             //密码
 

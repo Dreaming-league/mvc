@@ -17,8 +17,6 @@ public class Test {
 
     private String note;
 
-    private String e;
-
     public Long getId() {
         return id;
     }
@@ -75,11 +73,4 @@ public class Test {
         this.note = note == null ? null : note.trim();
     }
 
-    public String getE() {
-        return e;
-    }
-
-    public void setE(String e) {
-        this.e = e == null ? null : e.trim();
-    }
 }

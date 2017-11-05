@@ -7,7 +7,6 @@
         R.authId as authId,
 
         R.isActive as r_isActive,
-        R.isDelete as r_isDelete,
         R.createdBy as r_createdBy,
         R.updatedBy as r_updatedBy,
         R.createdTime as r_createdTime,
@@ -54,7 +53,7 @@
         select
         <include refid="authorizationColumns"/>
         from `shiro_authorization` A
-        left outer join `shiro_role_authorization_relation` R on R.isActive='1' and A.id = R.authorizationId
+        left outer join `shiro_role_authorization_relation` R on R.isActive='1' and A.id = R.authId
         where A.isDelete='0' and A.isActive='1' and A.id = #{id}
     </select>
 

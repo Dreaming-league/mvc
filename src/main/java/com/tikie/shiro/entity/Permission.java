@@ -3,24 +3,27 @@ package com.tikie.shiro.entity;
 import com.tikie.base.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
-import java.util.Date;
 import java.util.List;
 
-/**
- * @targget     权限实体类
- *
- * @author      tikie
+/**  
+ * 权限实体类
+ * @author      TiKie
  * @date        2016-10-02
  * @version     1.0.0
  */
 @Data
+@EqualsAndHashCode(callSuper=true)
 @NoArgsConstructor
 @AllArgsConstructor
 public class Permission extends Entity {
-    private String name;              //权限名称
+    /**
+	 * 实现序列化
+	 */
+	private static final long serialVersionUID = -1052271367845540732L;
+	private String name;              //权限名称
     private String permission;        //权限标识
     private String type;              //权限类型
 
