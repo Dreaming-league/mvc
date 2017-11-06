@@ -17,29 +17,29 @@
                 <!--向左对齐-->
                 <ul class="nav navbar-nav navbar-left">
                     <li>
-                        <a href="/test/requirejs/index">
+                        <a href="${ctx}/test/requirejs/index">
                             RequireJs
                         </a>
                     </li>
                     <shiro:hasRole name="defaultRole">
                     <li>
-                        <a href="/test/beet">
+                        <a href="${ctx}/test/beet">
                             Beetl
                         </a>
                     </li>
                     </shiro:hasRole>
                     <li>
-                        <a href="/api/index">
+                        <a href="${ctx}/api/index">
                             接口文档
                         </a>
                     </li>
                     <li>
-                        <a href="/front/theme/templates/admin/index.html">
+                        <a href="${ctx}/front/theme/templates/admin/index.html">
                             模版页面
                         </a>
                     </li>
                     <li>
-                        <a href="/shiro/menu/index">
+                        <a href="${ctx}/shiro/menu/index">
                             菜单管理
                         </a>
                     </li>
@@ -58,10 +58,10 @@
                 <ul class="nav navbar-nav navbar-right">
                     <shiro:guest>
                         <li><a href="javascript:void(0)"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-                        <li><a href="/f/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                        <li><a href="${ctx}/f/login"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
                     </shiro:guest>
                     <shiro:user>
-                        <li><a href="/f/logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
+                        <li><a href="${ctx}/f/logout"><span class="glyphicon glyphicon-log-out"></span> 退出</a></li>
                     </shiro:user>
                 </ul>
                 <p class="navbar-text navbar-right">欢迎加入梦想联盟</p>

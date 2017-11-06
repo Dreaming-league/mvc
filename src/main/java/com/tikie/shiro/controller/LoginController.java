@@ -21,9 +21,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
 /**
- * @targget     登录Controller类
+ * 登录Controller类
  *
- * @author      tikie
+ * @author      TiKie
  * @date        2016-10-09
  * @version     1.0.0
  */
@@ -34,7 +34,7 @@ public class LoginController {
     private UserService userService;
 
     /**
-     * @target      跳转到登录页面
+     * 跳转到登录页面
      *
      * @return      ModelAndView    跳转到对应login页面
      *              即WEB-INF/views/jsp/{module}/login.jsp页面
@@ -48,7 +48,7 @@ public class LoginController {
     }
 
     /**
-     * @target      跳转到列表页面
+     * 跳转到列表页面
      *
      * @return      ModelAndView    跳转到对应index页面
      *              即WEB-INF/views/jsp/{module}/index.jsp页面

@@ -4,9 +4,10 @@ var locale = "zh-cn";
 if(language){
     locale = language[1].split("_")[0];
 }
+var ctx = document.getElementById("ctx").getAttribute("value");
 
 requirejs.config({
-    baseUrl:'/static/js',//根路径
+    baseUrl:ctx + '/static/js',//根路径
     paths: {//模块对应的具体路径
         "jquery": "lib/jquery",
         "helper": "test/helper",
