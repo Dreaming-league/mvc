@@ -6,7 +6,6 @@
     <%@ include file="/WEB-INF/views/include/head.jsp"%>
 </head>
 <body>
-    <input type="hidden" id="ctxStatic" value="${ctxStatic}">
     <div id="bk_img" class="container" style="background:#fff url('${ctxStatic}/images/login/bg_img1.jpeg') no-repeat center center;background-size:cover;width: 100%;height:100%;">
         <div class="row">
             <div class="col-md-12 text-center">
@@ -17,7 +16,7 @@
 
         <div class="row">
             <div class="col-md-offset-4 col-md-4">
-                <form class="form-signin" method="post" action="/f/login">
+                <form class="form-signin" method="post" action="${ctx}/f/login">
                     <h2 class="form-signin-heading">Please sign in</h2>
                     <label for="inputAccount" class="sr-only">Account</label>
                     <input class="form-control" id="inputAccount" name="account" type="text" placeholder="账号" required autofocus>
