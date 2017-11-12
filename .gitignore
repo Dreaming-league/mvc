@@ -14,6 +14,9 @@ target/mvc.war
 *.war
 *.ear
 
+# 项目动态变更的build目录不再同步到线上
+/src/main/webapp/build/*
+
 # maven 默认target编译路径
 /target
 /target/classes
