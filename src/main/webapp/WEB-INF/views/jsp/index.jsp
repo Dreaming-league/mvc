@@ -44,7 +44,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="javascript:void(0)">
+                        <a href="${ctx}/shiro/user/index">
                             用户管理
                         </a>
                     </li>

@@ -32,6 +32,7 @@ public class UserController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   //true:允许输入空值，false:不能为空值
     }
 
+    @ResponseBody
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     public String getAllUsers(){
 
