@@ -14,7 +14,23 @@
   <script type="text/javascript">
   	$(function(){
   	  	$.get("${ctx}/a/all",function(data){
-  	  	$("#getAllUser").html(data);
+//  	  	    $("#getAllUser").html(data);
+            console.log(data);
+            console.log(typeof data);
+            var datas = JSON.parse(data);
+            var total = datas.total;
+            var size = datas.size;
+            var list = datas.data;
+
+            console.log(total);
+            if(total < 1)return;
+            var html_users = "<ul>";
+  	  	    $.each(list,function(i,e){
+                $("#getAllUser").html(e.account);
+                html_users += "<li data-user='" + e.id + "'>" + e.nickName + ";" + e.updatedTime + "</li>"
+            });
+
+            $("#getAllUser").html(html_users + "</ul>");
   	  	});
   	});
   	

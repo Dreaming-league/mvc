@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author tikie
@@ -24,39 +25,77 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    //日期格式化
-    @InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        dateFormat.setLenient(false);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));   //true:允许输入空值，false:不能为空值
-    }
-
     @ResponseBody
     @RequestMapping(value = "/all",method = RequestMethod.GET)
     public String getAllUsers(){
 
+        List<User> userList = userService.getAll();
+
         // TODO 做数据权限限制，组里的管理员查看到组下到人员;做好分页
-        return ResponseJson.getInstance().setData(userService.getAll()).toString();
+
+        return ResponseJson.getInstance()
+                .set2Default(true)
+                .setTotal(userList.size())
+                .setData(userList)
+                .toString();
     }
 
     @RequestMapping(value = "/getById",method = RequestMethod.POST)
     public String getById(@RequestParam String id){
 
-        return ResponseJson.getInstance().setData(userService.getById(id)).toString();
+        User user = userService.getById(id);
+
+        return ResponseJson.getInstance()
+                .set2Default(true)
+                .setTotal(1)
+                .setData(user)
+                .toString();
     }
 
     @RequestMapping(value = "/deleteByIds",method = RequestMethod.DELETE)
     public String deleteById(@RequestParam String[] ids){
 
-        return ResponseJson.getInstance().setData(userService.deleteByIds(ids)).toString();
+        Boolean status = userService.deleteByIds(ids);
+
+        String message = ResponseJson.RESPONSE_FAILED_MESSAGE;
+
+        if(status)message = ResponseJson.RESPONSE_SUCCESS_MESSAGE;
+
+        return ResponseJson.getInstance()
+                .set2Default(true)
+                .setData(ids)
+                .setStatus(status)
+                .setMessage(message)
+                .toString();
     }
 
     @RequestMapping(value = "/save",method = RequestMethod.POST)
     public String save(@RequestParam User user){
-        if(StringUtils.isNoneBlank(user.getId())){
-            return ResponseJson.getInstance().setData(userService.add(user)).toString();
+        if(null == user){
+            return ResponseJson.getInstance()
+                    .set2Default(false)
+                    .setMessage("用户不能为空")
+                    .toString();
         }
-        return ResponseJson.getInstance().setData(userService.update(user)).toString();
+
+        if(null == user.getId() || StringUtils.isBlank(user.getId())){
+            Boolean status = userService.update(user);
+            String message = ResponseJson.RESPONSE_FAILED_MESSAGE;
+            if(status)message = ResponseJson.RESPONSE_SUCCESS_MESSAGE;
+            return ResponseJson.getInstance()
+                    .set2Default(true)
+                    .setStatus(status)
+                    .setMessage(message)
+                    .toString();
+        }
+
+        Boolean status = userService.add(user);
+        String message = ResponseJson.RESPONSE_FAILED_MESSAGE;
+        if(status)message = ResponseJson.RESPONSE_SUCCESS_MESSAGE;
+        return ResponseJson.getInstance()
+                .set2Default(true)
+                .setStatus(status)
+                .setMessage(message)
+                .toString();
     }
 }
