@@ -349,6 +349,25 @@
       <version>2.2</version>
     </dependency>
 
+    <!-- activemq -->
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-core</artifactId>
+      <version>5.7.0</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>spring-context</artifactId>
+          <groupId>org.springframework</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-jms</artifactId>
+      <version>${springframework.version}</version>
+    </dependency>
+
     <!-- freemarker engine -->
     <dependency>
       <groupId>org.freemarker</groupId>
