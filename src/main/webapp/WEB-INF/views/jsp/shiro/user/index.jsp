@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    	用户管理
+    	用户管理《测试js获取用户数据》
   <div id="getAllUser">获取用户数据</div>
   
   <script type="text/javascript" src="${ctxStatic}/js/lib/jquery.js"></script>

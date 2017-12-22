@@ -27,6 +27,11 @@
                             Beetl
                         </a>
                     </li>
+                    <li>
+                        <a href="${ctx}/test/beet/demo">
+                            Beetl Demo
+                        </a>
+                    </li>
                     </shiro:hasRole>
                     <li>
                         <a href="${ctx}/api/index">

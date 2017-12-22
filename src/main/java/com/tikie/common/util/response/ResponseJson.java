@@ -37,8 +37,8 @@ public class ResponseJson {
     private int page = RESPONSE_DEFAULT_PAGE;               //当前页从0开始，代表第一页
     private int size = RESPONSE_DEFAULT_SIZE;               //每页多少条，默认10条
     private long total = RESPONSE_DEFAULT_TOTAL;            //总纪录数
-    private Map data = new HashMap();
-    private Map jsonData = new HashMap();
+    private Map<String, Object> data = new HashMap<String, Object>();
+    private Map<String, Object> jsonData = new HashMap<String, Object>();
     private static ResponseJson instance = null ;
     private static Gson gson = null ;
     private ResponseJson(){
@@ -125,7 +125,7 @@ public class ResponseJson {
 
         return instance;
     }
-    public ResponseJson setData(List list){
+    public ResponseJson setData(List<?> list){
         if(list!=null){
             this.data.put("data",list);
         }
@@ -146,10 +146,10 @@ public class ResponseJson {
     public long getTotal(){
         return this.total;
     }
-    public Map getData(){
+    public Map<String, Object> getData(){
         return this.data;
     }
-    public Map getJSONData(){
+    public Map<String, Object> getJSONData(){
         this.jsonData.put(RESPONSE_STATUS, status);
         this.jsonData.put(RESPONSE_MESSAGE, message);
         this.jsonData.put(RESPONSE_PAGE, page);

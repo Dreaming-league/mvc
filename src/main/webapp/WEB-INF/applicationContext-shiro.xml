@@ -71,6 +71,7 @@
             <value>
                 <!-- anon表示此地址不需要任何权限即可访问 -->
                 /static/**=anon
+                /front/**=anon
                 /u/**=anon
 
                 <!-- 退出拦截，请求/f/logout执行退出操作 -->

@@ -39,7 +39,7 @@
     <bean id="viewResolver" class="org.beetl.ext.spring.BeetlSpringViewResolver">
         <property name="viewNames" value="*.html" />
         <property name="cache" value="true" />
-        <property name="prefix" value="/WEB-INF/views/beetl/"/>
+        <property name="prefix" value="/front/"/>
         <property name="suffix" value="" />
         <property name="order" value="2"/>
     </bean>
@@ -58,8 +58,9 @@
     <mvc:view-controller path="/home" view-name="welcome" />
     <mvc:view-controller path="/uncaughtException" />
 
-
-
+	<!-- WEB-INF目录下静态文件的访问
+    <mvc:resources location="/WEB-INF/views/beetl/theme/" mapping="/views/beetl/theme/**"/>
+     -->
     <!-- 允许访问静态文件 -->
     <mvc:default-servlet-handler/>
 
