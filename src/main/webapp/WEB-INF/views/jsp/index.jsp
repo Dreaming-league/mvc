@@ -28,19 +28,14 @@
                         </a>
                     </li>
                     <li>
-                        <a href="${ctx}/test/beet/demo">
-                            Beetl Demo
+                        <a href="${ctx}/f/index">
+                             模版页面
                         </a>
                     </li>
                     </shiro:hasRole>
                     <li>
                         <a href="${ctx}/api/index">
                             接口文档
-                        </a>
-                    </li>
-                    <li>
-                        <a href="${ctx}/front/theme/templates/admin/index.html">
-                            模版页面
                         </a>
                     </li>
                     <li>

@@ -4,9 +4,6 @@ package com.tikie.test.web;
 import com.tikie.test.entity.HelloWorld;
 import com.tikie.test.service.HelloWorldService;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.beetl.core.GroupTemplate;
 import org.beetl.core.Template;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
@@ -101,25 +98,5 @@ public class HelloWorldController{
         //渲染到页面的指定模块
         mv.addObject("content",str);
         return mv;
-    }
-    
-    @RequestMapping(value = "/beet/demo",method = RequestMethod.GET)
-    public ModelAndView beetLOginDemo(){
-    	ModelAndView mv = new ModelAndView("theme/templates/admin/login.html");
-    	GroupTemplate gt = beetlConfig.getGroupTemplate();
-    	Map<String,Object> shared = new HashMap<String,Object>();
-    	shared.put("beetlCtx", "http://localhost:8080/mvc/front/theme/");
-    	gt.setSharedVars(shared);
-    	
-    	//加载模板
-        Template t = gt.getTemplate("theme/templates/admin/login.txt");
-        //绑定全局变量到模板
-//        t.binding("test","Beetl真好玩");
-
-        //获得html内容
-        String str = t.render();
-        System.out.println(str);
-    	
-    	return mv;
     }
 }
