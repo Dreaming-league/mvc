@@ -78,9 +78,9 @@ var TableAdvanced = function () {
             }
         });
 
-        var tableWrapper = $('#sample_1_wrapper'); // datatable creates the table wrapper by adding with id {your_table_jd}_wrapper
+//        var tableWrapper = $('#sample_1_wrapper'); // datatable creates the table wrapper by adding with id {your_table_jd}_wrapper
 
-        tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
+//        tableWrapper.find('.dataTables_length select').select2(); // initialize select2 dropdown
     }
     
     var testAjax = function(){
