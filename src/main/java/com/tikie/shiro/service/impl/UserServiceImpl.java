@@ -72,7 +72,8 @@ public class UserServiceImpl implements UserService{
      * @return  List<User>
      */
     public List<User> getAll(){
-        List<User> list = (List<User>) CacheUtils.get(USER_CACHE,USER_CACHE_USER_ + "list");
+        @SuppressWarnings("unchecked")
+		List<User> list = (List<User>) CacheUtils.get(USER_CACHE,USER_CACHE_USER_ + "list");
         if(list ==null ||list.size() <=0){
             list = userMapper.getAll(ResponseJson.getInstance().getPage()*ResponseJson.getInstance().getSize(),ResponseJson.getInstance().getSize());
             if(list ==null ||list.size() <=0){
@@ -83,4 +84,5 @@ public class UserServiceImpl implements UserService{
         return list;
 //        return userMapper.getAll(ResponseJson.getInstance().getPage()*ResponseJson.getInstance().getSize(),ResponseJson.getInstance().getSize());
     }
+
 }

@@ -273,7 +273,7 @@ DROP TABLE IF EXISTS `shiro_user`;
 CREATE TABLE `shiro_user` (
   `id` varchar(32) NOT NULL,
   `groupId` varchar(32) DEFAULT NULL COMMENT '组ID',
-  `account` varchar(32) DEFAULT NULL COMMENT '登录账号',
+  `account` varchar(32) DEFAULT NULL UNIQUE COMMENT '登录账号',
   `pwd` varchar(32) DEFAULT NULL COMMENT '登录密码',
   `nickName` varchar(32) DEFAULT NULL COMMENT '昵称',
   `photo` varchar(32) DEFAULT NULL COMMENT '头像',

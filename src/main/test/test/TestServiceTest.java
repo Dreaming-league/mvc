@@ -27,4 +27,12 @@ public class TestServiceTest {
         int i = testService.deleteByExample(example);
         System.out.println("输出内容:"+ i);
     }
+    
+    @Test
+    public void testMain(){
+        
+        System.out.println("输出内容:"+ 0/10);
+        System.out.println("输出内容:"+ 11/10);
+        System.out.println("输出内容:"+ 19/10);
+    }
 }
