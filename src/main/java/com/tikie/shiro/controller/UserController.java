@@ -47,10 +47,22 @@ public class UserController {
       */
     @RequestMapping(value="find-user-info",method=RequestMethod.POST)
     @ResponseBody
-    public String getUsers(@RequestParam(value = "sEcho",required = false)Integer sEcho,@RequestParam("draw")Integer draw, @RequestParam("start")Integer start,@RequestParam("length")Integer length) {
+    public String getUsers(
+    		@RequestParam(value = "sEcho",required = false)Integer sEcho,
+    		@RequestParam("draw")Integer draw, 
+//    		@RequestParam("columns")List<Map<String,Object>> columns, 
+//    		@RequestParam("order")List<Map<String,Object>> order, 
+//    		@RequestParam("search")Map<String,Object> search, 
+    		@RequestParam("start")Integer start,
+    		@RequestParam("length")Integer length) {
 
     	start = start<0?0:start;
     	length = length<0?0:length;
+    	
+//    	System.out.println(columns.toString());
+//    	System.out.println(order.toString());
+//    	System.out.println(search);
+    	
     	
     	ResponseJson.getInstance().setSize(length).setPage(start/length);
     	
