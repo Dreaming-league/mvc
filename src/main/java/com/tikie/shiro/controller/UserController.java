@@ -47,7 +47,7 @@ public class UserController {
       */
     @RequestMapping(value="find-user-info",method=RequestMethod.POST)
     @ResponseBody
-    public String getUsers(@RequestParam(value = "sEcho",required = false)Integer sEcho, @RequestParam("start")Integer start,@RequestParam("length")Integer length) {
+    public String getUsers(@RequestParam(value = "sEcho",required = false)Integer sEcho,@RequestParam("draw")Integer draw, @RequestParam("start")Integer start,@RequestParam("length")Integer length) {
 
     	start = start<0?0:start;
     	length = length<0?0:length;
@@ -64,17 +64,17 @@ public class UserController {
     	//当前页数据
 //        map.put("aaData", userList);
         map.put("data", userList);
-        map.put("draw", 1);
+        map.put("draw", draw);
         //页数信息配置
-//        map.put("sEcho", null);
+        map.put("sEcho", sEcho);
 //        map.put("iTotalDisplayRecords", userList.size());
-        map.put("recordsFiltered", userList.size());
+        map.put("recordsTotal", userList.size());
         
         // 全部用户  TODO 全部数据数量可以放到缓存，参数一致性，更新机制
         ResponseJson.getInstance().setSize(Integer.MAX_VALUE).setPage(ResponseJson.RESPONSE_DEFAULT_PAGE);
         List<User> alluserList = userService.getAll();
 //        map.put("iTotalRecords", alluserList.size());
-        map.put("recordsTotal", alluserList.size());
+        map.put("recordsFiltered", alluserList.size());
         
         ResponseJson.getInstance().set2Default(true);
         return gson.toJson(map);
