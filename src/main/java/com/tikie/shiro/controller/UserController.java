@@ -10,9 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import javax.servlet.http.HttpServletRequest;
+import java.util.*;
 
 /**
  * @author tikie
@@ -39,31 +38,40 @@ public class UserController {
                 .setData(userList)
                 .toString();
     }
-    
+
     /**
-     * @(dataTable格式)
-     * @param:[onDuty, sEcho, start：开始索引数, length：每页显示数量]
-     * @return:java.util.Map<java.lang.String,java.lang.Object>
-      */
+     * 用户数据接口
+     * @param sEcho
+     * @param draw          请求次序
+     * @param searchValue   搜索内容
+     * @param searchRegex   搜索是否支持正则true/false
+     * @param orderColumn   排序的列数
+     * @param orderDir      排序的顺序asc/desc
+     * @param start         开始索引
+     * @param length        每页的个数
+     * @return
+     */
     @RequestMapping(value="find-user-info",method=RequestMethod.POST)
     @ResponseBody
     public String getUsers(
-    		@RequestParam(value = "sEcho",required = false)Integer sEcho,
-    		@RequestParam("draw")Integer draw, 
-//    		@RequestParam("columns")List<Map<String,Object>> columns, 
-//    		@RequestParam("order")List<Map<String,Object>> order, 
-//    		@RequestParam("search")Map<String,Object> search, 
-    		@RequestParam("start")Integer start,
-    		@RequestParam("length")Integer length) {
+            @RequestParam(value = "sEcho",required = false)Integer sEcho,
+            @RequestParam("draw")Integer draw,
+    		@RequestParam("search[value]")String searchValue,
+    		@RequestParam("search[regex]")Boolean searchRegex,
+    		@RequestParam("order[0][column]")Integer orderColumn,
+    		@RequestParam("order[0][dir]")String orderDir,
+            @RequestParam("start")Integer start,
+            @RequestParam("length")Integer length) {
 
     	start = start<0?0:start;
     	length = length<0?0:length;
-    	
-//    	System.out.println(columns.toString());
-//    	System.out.println(order.toString());
-//    	System.out.println(search);
-    	
-    	
+
+        System.out.println(searchValue);
+        System.out.println(searchRegex);
+
+        System.out.println(orderColumn);
+        System.out.println(orderDir);
+
     	ResponseJson.getInstance().setSize(length).setPage(start/length);
     	
     	Map<String,Object> map = new HashMap<String, Object>();

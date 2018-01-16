@@ -20,8 +20,9 @@ var TableAdvanced = function () {
 
         var oTable = table.dataTable({
         	"processing" : true,// 显示“处理中...” 
-            "serverSide" : true,// 开启服务器模式。
+            "serverSide" : true,// 开启服务器模式,打开后台分页
             "deferRender": true,// 开启延迟渲染，数据量大时会快点
+            // searching: false,   // 屏蔽datatales的查询框
             // Internationalisation. For more info refer to http://datatables.net/manual/i18n
             "language": {
 //                "aria": {
@@ -35,7 +36,7 @@ var TableAdvanced = function () {
 //                "lengthMenu": "Show _MENU_ entries",
 //                "search": "Search:",
 //                "zeroRecords": "No matching records found"
-            	url: '/mvc/front/theme/assets/admin/pages/scripts/zh_CN.json'
+            	url: '/front/theme/assets/admin/pages/scripts/zh_CN.json'
             },
 
             // Or you can use remote translation file
@@ -44,9 +45,8 @@ var TableAdvanced = function () {
             //},
 
             "order": [
-                [0, 'asc']
+                [1, 'asc']
             ],
-            
             "lengthMenu": [
                 [5, 10, 15, 20, -1],
                 [5, 10, 15, 20, "All"] // change per page values here
@@ -62,7 +62,7 @@ var TableAdvanced = function () {
             //"dom": "<'row' <'col-md-12'T>><'row'<'col-md-6 col-sm-12'l><'col-md-6 col-sm-12'f>r>t<'row'<'col-md-5 col-sm-12'i><'col-md-7 col-sm-12'p>>",
 
             "tableTools": {
-                "sSwfPath": "/mvc/front/theme/assets/global/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
+                "sSwfPath": "/front/theme/assets/global/plugins/datatables/extensions/TableTools/swf/copy_csv_xls_pdf.swf",
                 "aButtons": [{
                     "sExtends": "pdf",
                     "sButtonText": "PDF"
@@ -81,10 +81,15 @@ var TableAdvanced = function () {
             }
             ,
             "ajax": {
-                "url": "/mvc/a/find-user-info" ,// ajax source
+                "url": "/a/find-user-info" ,// ajax source
                 "type": "POST"
             	,
                 "dataSrc": "data" // 数据返回集合的key,默认data
+                // "data": function ( d ) {
+                //     var level1 = $('#level1').val();
+                //     //添加额外的参数传给服务器
+                //     d.extra_search = level1;
+                // }
             }
             ,
         	"columns": [
@@ -93,6 +98,14 @@ var TableAdvanced = function () {
                 {"data": "sex"},
                 {"data": "phone"},
                 {"data": "email"}
+            ],
+            "columnDefs":[
+                {
+                    //设置第一列不参与搜索
+
+                    "targets":[0],
+                    "searchable":false
+                }
             ],
             "createdRow": function ( row, data, index ) {
 //                if ( data[5].replace(/[\$,]/g, '') * 1 > 150000 ) {
@@ -126,7 +139,11 @@ var TableAdvanced = function () {
                 $(this).addClass('text-danger');
             }
         } );
-     
+
+        // function search1(){
+        //     oTable.ajax.reload();
+        // }
+
 //        $('#button').click( function () {
 //            table.row('.selected').remove().draw( false );
 //        } );
